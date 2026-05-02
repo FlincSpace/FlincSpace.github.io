@@ -385,7 +385,7 @@ html, body { height: 100%; font-family: var(--font); background: var(--bg); colo
       <div class="sb-logo">W</div>
       <div class="sb-brand-text">
         <div class="brand-name">Workspace</div>
-        <div class="brand-org">Acme Corp</div>
+        <div class="brand-org">Flinc Space Co.</div>
       </div>
     </div>
     <div class="sb-user">
@@ -396,32 +396,32 @@ html, body { height: 100%; font-family: var(--font); background: var(--bg); colo
       </div>
     </div>
     <nav class="sb-nav">
-      <div class="sb-section">Main</div>
+      <div class="sb-section">Hauptmenü</div>
       <div class="sni active" data-tab="home">
         <svg viewBox="0 0 24 24"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/><path d="M9 21V12h6v9"/></svg>
-        <span class="sni-label">Dashboard</span>
+        <span class="sni-label">Übersicht</span>
       </div>
       <div class="sni" data-tab="channels">
         <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
-        <span class="sni-label">Channels</span>
+        <span class="sni-label">Kanäle</span>
       </div>
       <div class="sni" data-tab="kalender">
         <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="4" x2="9" y2="9"/><line x1="15" y1="4" x2="15" y2="9"/></svg>
-        <span class="sni-label">Calendar</span>
+        <span class="sni-label">Kalender</span>
       </div>
       <div class="sni" data-tab="videos">
         <svg viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
         <span class="sni-label">Videos</span>
       </div>
-      <div class="sb-section">Communication</div>
+      <div class="sb-section">Kommunikation</div>
       <div class="sni" data-tab="messages">
         <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-        <span class="sni-label">Messages</span>
+        <span class="sni-label">Nachrichten</span>
       </div>
-      <div class="sb-section">Account</div>
+      <div class="sb-section">Konto</div>
       <div class="sni" data-tab="profil">
         <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
-        <span class="sni-label">Profile</span>
+        <span class="sni-label">Profil</span>
       </div>
     </nav>
   </aside>
@@ -430,8 +430,8 @@ html, body { height: 100%; font-family: var(--font); background: var(--bg); colo
   <div class="main">
     <div class="main-header">
       <div>
-        <div class="main-title" id="page-title">Dashboard</div>
-        <div class="main-sub" id="page-sub">Good morning, Alex 👋</div>
+        <div class="main-title" id="page-title">Übersicht</div>
+        <div class="main-sub" id="page-sub">Guten Morgen, Alex 👋</div>
       </div>
       <div class="mob-av" style="display:none">AJ</div>
     </div>
@@ -443,25 +443,25 @@ html, body { height: 100%; font-family: var(--font); background: var(--bg); colo
         <div class="home-grid">
           <!-- LEFT COLUMN -->
           <div>
-            <div class="sl-row"><span class="sl">Channels</span><span class="sl-more" onclick="switchTab('channels')">View all</span></div>
+            <div class="sl-row"><span class="sl">Kanäle</span><span class="sl-more" onclick="switchTab('channels')">Alle anzeigen</span></div>
             <div class="ch-scroll" id="home-channels"></div>
             <!-- Featured Video + Notifications row -->
             <div class="home-left-bottom">
               <div>
-                <div class="sl-row" style="margin-top:0"><span class="sl">Featured Video</span></div>
+                <div class="sl-row" style="margin-top:0"><span class="sl">Empfohlenes Video</span></div>
                 <div id="home-featured-video"></div>
               </div>
               <div>
-                <div class="sl-row" style="margin-top:0"><span class="sl">Notifications</span></div>
+                <div class="sl-row" style="margin-top:0"><span class="sl">Benachrichtigungen</span></div>
                 <div class="scroll-list" id="home-notifications"></div>
               </div>
             </div>
           </div>
           <!-- RIGHT COLUMN -->
           <div>
-            <div class="sl-row"><span class="sl">Upcoming</span><span class="sl-more" onclick="switchTab('kalender')">Calendar</span></div>
+            <div class="sl-row"><span class="sl">Bevorstehend</span><span class="sl-more" onclick="switchTab('kalender')">Kalender</span></div>
             <div id="home-upcoming" class="scroll-list"></div>
-            <div class="sl" style="margin-top:20px">Quick Access</div>
+            <div class="sl" style="margin-top:20px">Schnellzugriff</div>
             <div class="card" id="home-quickaccess"></div>
           </div>
         </div>
@@ -469,7 +469,7 @@ html, body { height: 100%; font-family: var(--font); background: var(--bg); colo
 
       <!-- CHANNELS -->
       <div class="tp" id="tab-channels">
-        <div class="sl" style="margin-top:0">Your Channels</div>
+        <div class="sl" style="margin-top:0">Deine Kanäle</div>
         <div class="ch-grid" id="channels-grid"></div>
       </div>
 
@@ -482,16 +482,16 @@ html, body { height: 100%; font-family: var(--font); background: var(--bg); colo
                 <button class="cnb" id="cp">‹</button>
                 <span class="cmt" id="ct"></span>
                 <button class="cnb" id="cn">›</button>
-                <button class="cadd-btn" id="cadd">＋ Event</button>
+                <button class="cadd-btn" id="cadd">＋ Termin</button>
               </div>
               <div class="cgw">
-                <div class="wr"><div class="wl">Mon</div><div class="wl">Tue</div><div class="wl">Wed</div><div class="wl">Thu</div><div class="wl">Fri</div><div class="wl">Sat</div><div class="wl">Sun</div></div>
+                <div class="wr"><div class="wl">Mo</div><div class="wl">Di</div><div class="wl">Mi</div><div class="wl">Do</div><div class="wl">Fr</div><div class="wl">Sa</div><div class="wl">So</div></div>
                 <div class="cg" id="cg"></div>
               </div>
             </div>
           </div>
           <div class="ev-side">
-            <div class="ev-side-hd" id="csl">Select a day</div>
+            <div class="ev-side-hd" id="csl">Tag auswählen</div>
             <div class="ev-side-body" id="cel"></div>
           </div>
         </div>
@@ -499,7 +499,7 @@ html, body { height: 100%; font-family: var(--font); background: var(--bg); colo
 
       <!-- VIDEOS -->
       <div class="tp" id="tab-videos">
-        <div class="sl-row" style="margin-top:0"><span class="sl">Featured</span></div>
+        <div class="sl-row" style="margin-top:0"><span class="sl">Empfohlen</span></div>
         <div class="vid-grid" id="vid-grid"></div>
       </div>
 
@@ -507,13 +507,13 @@ html, body { height: 100%; font-family: var(--font); background: var(--bg); colo
       <div class="tp" id="tab-messages">
         <div class="msg-layout">
           <div class="msg-list-col">
-            <div class="msg-list-hd">Messages</div>
+            <div class="msg-list-hd">Nachrichten</div>
             <div class="msg-list-scroll" id="msg-list"></div>
           </div>
           <div class="chat-window" id="chat-window">
             <div class="chat-empty">
               <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-              <span>Select a conversation</span>
+              <span>Gespräch auswählen</span>
             </div>
           </div>
         </div>
@@ -528,21 +528,21 @@ html, body { height: 100%; font-family: var(--font); background: var(--bg); colo
               <div class="profile-name">Alex Johnson</div>
               <div class="profile-role">Product Manager · Acme Corp</div>
               <div class="profile-stats">
-                <div class="psc"><div class="psn" id="prof-ch-count">0</div><div class="psl">Channels</div></div>
-                <div class="psc"><div class="psn">3</div><div class="psl">Tasks</div></div>
+                <div class="psc"><div class="psn" id="prof-ch-count">0</div><div class="psl">Kanäle</div></div>
+                <div class="psc"><div class="psn">3</div><div class="psl">Aufgaben</div></div>
                 <div class="psc"><div class="psn">12</div><div class="psl">Meetings</div></div>
               </div>
             </div>
           </div>
           <div>
-            <div class="sl" style="margin-top:0">Settings</div>
+            <div class="sl" style="margin-top:0">Einstellungen</div>
             <div class="card">
-              <div class="sr"><span class="srl">👤 Edit Profile</span><span style="color:var(--muted)">›</span></div>
-              <div class="sr"><span class="srl">🔔 Notifications</span><span style="color:var(--muted)">›</span></div>
-              <div class="sr"><span class="srl">🌐 Language & Region</span><span style="color:var(--muted)">›</span></div>
-              <div class="sr"><span class="srl">🔒 Privacy & Security</span><span style="color:var(--muted)">›</span></div>
-              <div class="sr"><span class="srl">🎨 Appearance</span><span style="color:var(--muted)">›</span></div>
-              <div class="sr"><span class="srl" style="color:var(--red)">🚪 Sign Out</span><span style="color:var(--muted)">›</span></div>
+              <div class="sr"><span class="srl">👤 Profil bearbeiten</span><span style="color:var(--muted)">›</span></div>
+              <div class="sr"><span class="srl">🔔 Benachrichtigungen</span><span style="color:var(--muted)">›</span></div>
+              <div class="sr"><span class="srl">🌐 Sprache & Region</span><span style="color:var(--muted)">›</span></div>
+              <div class="sr"><span class="srl">🔒 Datenschutz & Sicherheit</span><span style="color:var(--muted)">›</span></div>
+              <div class="sr"><span class="srl">🎨 Erscheinungsbild</span><span style="color:var(--muted)">›</span></div>
+              <div class="sr"><span class="srl" style="color:var(--red)">🚪 Abmelden</span><span style="color:var(--muted)">›</span></div>
             </div>
           </div>
         </div>
@@ -553,31 +553,31 @@ html, body { height: 100%; font-family: var(--font); background: var(--bg); colo
 
   <!-- BOTTOM NAV (mobile) -->
   <nav class="nav-bar">
-    <div class="ni active" data-tab="home"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/><path d="M9 21V12h6v9"/></svg><span class="nl">Home</span></div>
-    <div class="ni" data-tab="channels"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg><span class="nl">Channels</span></div>
+    <div class="ni active" data-tab="home"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/><path d="M9 21V12h6v9"/></svg><span class="nl">Start</span></div>
+    <div class="ni" data-tab="channels"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg><span class="nl">Kanäle</span></div>
     <div class="ni" data-tab="videos"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg><span class="nl">Videos</span></div>
-    <div class="ni" data-tab="messages"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg><span class="nl">Messages</span></div>
-    <div class="ni" data-tab="profil"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg><span class="nl">Profile</span></div>
+    <div class="ni" data-tab="messages"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg><span class="nl">Nachrichten</span></div>
+    <div class="ni" data-tab="profil"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg><span class="nl">Profil</span></div>
   </nav>
 </div>
 
 <!-- CALENDAR MODAL -->
 <div class="mo" id="modal">
   <div class="md">
-    <h3 id="mh">Add Event</h3>
-    <label>Title</label><input type="text" id="et" placeholder="e.g. Q3 Strategy Review">
-    <label>Date</label><input type="date" id="ed">
-    <label>Details</label><input type="text" id="ede" placeholder="e.g. 10:00 – 11:00, Room 3B">
-    <label>Category</label>
+    <h3 id="mh">Termin hinzufügen</h3>
+    <label>Titel</label><input type="text" id="et" placeholder="z.B. Q3 Strategiegespräch">
+    <label>Datum</label><input type="date" id="ed">
+    <label>Details</label><input type="text" id="ede" placeholder="z.B. 10:00–11:00, Raum 3B">
+    <label>Kategorie</label>
     <select id="ety">
-      <option value="red">Deadline / Review</option>
+      <option value="red">Frist / Review</option>
       <option value="amber">Meeting / Workshop</option>
-      <option value="teal">Event / Social</option>
-      <option value="purple">Other</option>
+      <option value="teal">Veranstaltung / Soziales</option>
+      <option value="purple">Sonstiges</option>
     </select>
     <div class="mbs">
-      <button class="mb s" id="mcancel">Cancel</button>
-      <button class="mb p" id="msave">Save</button>
+      <button class="mb s" id="mcancel">Abbrechen</button>
+      <button class="mb p" id="msave">Speichern</button>
     </div>
   </div>
 </div>
@@ -604,9 +604,9 @@ html, body { height: 100%; font-family: var(--font); background: var(--bg); colo
         </div>
         <div class="vp-views" id="vp-views"></div>
       </div>
-      <div class="vp-section">Discussion Questions</div>
+      <div class="vp-section">Diskussionsfragen</div>
       <div class="vp-questions" id="vp-questions"></div>
-      <div class="vp-section">Exercises</div>
+      <div class="vp-section">Übungen</div>
       <div class="vp-exercises" id="vp-exercises"></div>
     </div>
   </div>
@@ -638,16 +638,16 @@ const NOTIFICATIONS = [
 ];
 
 const QUICK_ACCESS = [
-  { icon:'📋', label:'Task Board',   sub:'3 tasks due this week', tab:'home'    },
-  { icon:'📂', label:'Documents',    sub:'Last edited: Q3 Review',tab:'home'    },
-  { icon:'🎥', label:'Latest Video', sub:'Product Roadmap 2025',  tab:'videos'  },
+  { icon:'📋', label:'Aufgabentafel',   sub:'3 Aufgaben diese Woche fällig', tab:'home'    },
+  { icon:'📂', label:'Dokumente',       sub:'Zuletzt bearbeitet: Q3 Review', tab:'home'    },
+  { icon:'🎥', label:'Neuestes Video',  sub:'Product Roadmap 2025',          tab:'videos'  },
 ];
 
 const STATS = [
-  { num: () => CHANNELS.length, label:'Channels',    cls:'s0' },
-  { num: 3,                      label:'Open Tasks',  cls:'s1' },
-  { num: 2,                      label:'Events Today',cls:'s2' },
-  { num: 7,                      label:'Unread Msgs', cls:'s3' },
+  { num: () => CHANNELS.length, label:'Kanäle',              cls:'s0' },
+  { num: 3,                      label:'Offene Aufgaben',     cls:'s1' },
+  { num: 2,                      label:'Termine heute',       cls:'s2' },
+  { num: 7,                      label:'Ungelesen',           cls:'s3' },
 ];
 
 // Each video can have questions (accordion) and exercises (MCQ or open-ended)
@@ -1031,12 +1031,12 @@ function sendMsg(id) {
 
 // ── NAV ──
 const PAGE_INFO = {
-  home:     { title:'Dashboard',  sub:'Good morning, Alex 👋' },
-  channels: { title:'Channels',   sub:'Your workspaces and departments' },
-  kalender: { title:'Calendar',   sub:'Meetings, deadlines & events' },
-  videos:   { title:'Videos',     sub:'Recordings and training content' },
-  messages: { title:'Messages',   sub:'Direct messages and group chats' },
-  profil:   { title:'Profile',    sub:'Alex Johnson · Product Manager' },
+  home:     { title:'Übersicht',  sub:'Guten Morgen, Alex 👋' },
+  channels: { title:'Kanäle',   sub:'Deine Arbeitsbereiche und Abteilungen' },
+  kalender: { title:'Kalender',   sub:'Meetings, Fristen & Veranstaltungen' },
+  videos:   { title:'Videos',     sub:'Aufzeichnungen und Schulungsinhalte' },
+  messages: { title:'Nachrichten',   sub:'Direktnachrichten und Gruppenchats' },
+  profil:   { title:'Profil',    sub:'Alex Johnson · Product Manager' },
 };
 function switchTab(tab) {
   document.querySelectorAll('.sni,.ni').forEach(n => n.classList.toggle('active', n.dataset.tab===tab));
@@ -1051,15 +1051,15 @@ document.querySelectorAll('.sni,.ni').forEach(n => n.addEventListener('click',()
 
 // ── CALENDAR ──
 const T = new Date();
-const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-const DAYS = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+const MONTHS = ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'];
+const DAYS = ['Sontag','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag'];
 const COLS = { red:{bar:'#E24B4A',dot:'dred'}, amber:{bar:'#E8960A',dot:'damb'}, teal:{bar:'#1D9E75',dot:'dteal'}, purple:{bar:'#5B50D6',dot:'dacc'} };
 let vy=T.getFullYear(), vm=T.getMonth(), sel=null, eid=null;
 let evs = [
-  {id:1, date:f(T.getFullYear(),T.getMonth(),15),  title:'Q3 Strategy Review',   detail:'10:00 – 12:00 · Conference Room A', type:'red'},
-  {id:2, date:f(T.getFullYear(),T.getMonth(),22),  title:'All-Hands Meeting',     detail:'14:00 – 15:30 · Main Hall',          type:'amber'},
-  {id:3, date:f(T.getFullYear(),T.getMonth()+1,3), title:'Team Off-site',         detail:'Fri–Sun · Berlin',                    type:'teal'},
-  {id:4, date:f(T.getFullYear(),T.getMonth(),28),  title:'Product Launch',        detail:'09:00 · Virtual + In-person',         type:'purple'},
+  {id:1, date:f(T.getFullYear(),T.getMonth(),15),  title:'Q3 Strategy Review',   detail:'10:00 – 12:00 · Konferenz Raum A', type:'red'},
+  {id:2, date:f(T.getFullYear(),T.getMonth(),22),  title:'Gesamtbesprechung',     detail:'14:00 – 15:30 · Halle',          type:'amber'},
+  {id:3, date:f(T.getFullYear(),T.getMonth()+1,3), title:'Team Off-site',         detail:'Fri–Son · Berlin',                    type:'teal'},
+  {id:4, date:f(T.getFullYear(),T.getMonth(),28),  title:'Product Launch',        detail:'09:00 · Digital + persöhnlich',         type:'purple'},
 ];
 let nid = 5;
 function f(y,m,d){const dt=new Date(y,m,d);return dt.getFullYear()+'-'+String(dt.getMonth()+1).padStart(2,'0')+'-'+String(dt.getDate()).padStart(2,'0');}
@@ -1090,11 +1090,11 @@ function rc(){
 }
 function rel(){
   const l=document.getElementById('cel'),lb=document.getElementById('csl');
-  if(!sel){lb.textContent='Select a day';l.innerHTML='<p class="ne">Click a day to see events</p>';return;}
+  if(!sel){lb.textContent='Tag auswählen';l.innerHTML='<p class="ne">Tag anklicken, um Termine zu sehen</p>';return;}
   const[y,m,d]=sel.split('-').map(Number);
   lb.textContent=DAYS[new Date(y,m-1,d).getDay()]+', '+MONTHS[m-1]+' '+d;
   const de=evs.filter(e=>e.date===sel);
-  if(!de.length){l.innerHTML='<p class="ne">No events on this day</p>';return;}
+  if(!de.length){l.innerHTML='<p class="ne">Keine Termine an diesem Tag</p>';return;}
   l.innerHTML='';
   de.forEach(ev=>{
     const c=COLS[ev.type]||COLS.purple,el=document.createElement('div');el.className='eli';
@@ -1105,7 +1105,7 @@ function rel(){
 function rhu(){
   const c=document.getElementById('home-upcoming');
   const up=evs.filter(e=>e.date>=td()).sort((a,b)=>a.date.localeCompare(b.date)).slice(0,3);
-  if(!up.length){c.innerHTML='<div class="li"><p class="is">No upcoming events</p></div>';return;}
+  if(!up.length){c.innerHTML='<div class="li"><p class="is">Keine bevorstehenden Termine</p></div>';return;}
   c.innerHTML='';
   up.forEach(ev=>{
     const col=COLS[ev.type]||COLS.purple,[y,m,d]=ev.date.split('-').map(Number),el=document.createElement('div');el.className='li';
@@ -1115,8 +1115,8 @@ function rhu(){
 }
 document.getElementById('cp').addEventListener('click',()=>{vm--;if(vm<0){vm=11;vy--;}rc();rel();});
 document.getElementById('cn').addEventListener('click',()=>{vm++;if(vm>11){vm=0;vy++;}rc();rel();});
-function openAdd(){eid=null;document.getElementById('mh').textContent='Add Event';document.getElementById('et').value='';document.getElementById('ed').value=sel||td();document.getElementById('ede').value='';document.getElementById('ety').value='amber';document.getElementById('modal').classList.add('open');}
-function oe(id){const ev=evs.find(e=>e.id===id);if(!ev)return;eid=id;document.getElementById('mh').textContent='Edit Event';document.getElementById('et').value=ev.title;document.getElementById('ed').value=ev.date;document.getElementById('ede').value=ev.detail;document.getElementById('ety').value=ev.type;document.getElementById('modal').classList.add('open');}
+function openAdd(){eid=null;document.getElementById('mh').textContent='Termin hinzufügen';document.getElementById('et').value='';document.getElementById('ed').value=sel||td();document.getElementById('ede').value='';document.getElementById('ety').value='amber';document.getElementById('modal').classList.add('open');}
+function oe(id){const ev=evs.find(e=>e.id===id);if(!ev)return;eid=id;document.getElementById('mh').textContent='Termin bearbeiten';document.getElementById('et').value=ev.title;document.getElementById('ed').value=ev.date;document.getElementById('ede').value=ev.detail;document.getElementById('ety').value=ev.type;document.getElementById('modal').classList.add('open');}
 function cm(){document.getElementById('modal').classList.remove('open');}
 function de2(id){evs=evs.filter(e=>e.id!==id);rc();rel();rhu();}
 document.getElementById('cadd').addEventListener('click',openAdd);
