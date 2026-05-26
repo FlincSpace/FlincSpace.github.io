@@ -374,6 +374,284 @@ html, body { height: 100%; font-family: var(--font); background: var(--bg); colo
   .sni { padding: 7px 9px; }
   .main-scroll { padding: 14px 18px 20px; }
 }
+
+/* ══════════════════════════════════════
+   ADMIN MODE
+══════════════════════════════════════ */
+.student-nav { display: flex; flex-direction: column; gap: 2px; }
+.admin-nav   { display: none; flex-direction: column; gap: 2px; }
+.app.admin-mode .student-nav { display: none; }
+.app.admin-mode .admin-nav   { display: flex; }
+
+/* Mode toggle button */
+.mode-toggle {
+  margin: 8px;
+  padding: 9px 12px;
+  border-radius: 10px;
+  display: flex; align-items: center; gap: 9px;
+  cursor: pointer; border: 1.5px solid var(--border);
+  background: none; font-family: var(--font);
+  font-size: 12px; font-weight: 700; color: var(--muted);
+  transition: all 0.15s; width: calc(100% - 16px);
+}
+.mode-toggle:hover { border-color: var(--accent); color: var(--accent-d); background: var(--accent-l); }
+.app.admin-mode .mode-toggle { background: var(--accent); color: #fff; border-color: var(--accent); }
+.app.admin-mode .mode-toggle:hover { background: var(--accent-d); }
+.mode-toggle-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--muted); flex-shrink:0; transition: background 0.15s; }
+.app.admin-mode .mode-toggle-dot { background: #fff; }
+.admin-badge { display: none; background: var(--accent); color: #fff; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 999px; }
+.app.admin-mode .admin-badge { display: inline-block; }
+
+/* ── ADMIN HEADER ACCENT ── */
+.app.admin-mode .main-header { border-bottom: 2px solid var(--accent); }
+
+/* ── ADMIN STATS ── */
+.admin-stats-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px,1fr)); gap: 10px; margin-bottom: 22px; }
+.admin-stat { background: var(--card); border: 1px solid var(--border); border-radius: var(--r); padding: 14px 16px; }
+.admin-stat-num { font-size: 24px; font-weight: 800; }
+.admin-stat-lbl { font-size: 11px; color: var(--muted); font-weight: 600; margin-top: 2px; }
+.admin-stat-sub { font-size: 10px; color: var(--muted); margin-top: 4px; }
+.admin-stat.a0 .admin-stat-num { color: var(--accent); }
+.admin-stat.a1 .admin-stat-num { color: var(--teal); }
+.admin-stat.a2 .admin-stat-num { color: var(--amber); }
+.admin-stat.a3 .admin-stat-num { color: var(--red); }
+
+/* ── JAHRGANG GRID ── */
+.jahrgang-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px,1fr)); gap: 14px; }
+.jg-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--r); padding: 18px; cursor: pointer; transition: transform 0.15s, box-shadow 0.15s; }
+.jg-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.1); }
+.jg-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 12px; }
+.jg-badge { width: 44px; height: 44px; border-radius: 11px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 15px; color: #fff; flex-shrink: 0; }
+.jg-actions { display: flex; gap: 5px; }
+.jg-act-btn { background: var(--bg); border: 1px solid var(--border); border-radius: 7px; padding: 4px 8px; font-size: 10px; font-weight: 700; color: var(--muted); cursor: pointer; transition: all 0.12s; white-space: nowrap; }
+.jg-act-btn:hover { border-color: var(--accent); color: var(--accent-d); background: var(--accent-l); }
+.jg-name { font-size: 18px; font-weight: 800; color: var(--text); margin-bottom: 2px; }
+.jg-teacher { font-size: 12px; color: var(--muted); margin-bottom: 10px; }
+.jg-subjects { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 12px; }
+.jg-fach-chip { font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 999px; }
+.jg-meta { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.jg-meta-item { display: flex; align-items: center; gap: 4px; font-size: 11px; color: var(--muted); }
+.jg-progress-label { display: flex; justify-content: space-between; font-size: 11px; color: var(--muted); margin-bottom: 5px; }
+.jg-progress-bar { height: 6px; background: var(--bg); border-radius: 3px; overflow: hidden; }
+.jg-progress-fill { height: 100%; border-radius: 3px; transition: width 0.4s ease; }
+
+/* ── ADMIN HOME RIGHT PANEL ── */
+.admin-home-grid { display: grid; grid-template-columns: 1fr 300px; gap: 20px; margin-top: 22px; }
+@media (max-width:1100px) { .admin-home-grid { grid-template-columns: 1fr; } }
+.admin-upcoming-releases { background: var(--card); border: 1px solid var(--border); border-radius: var(--r); overflow: hidden; }
+.aur-hd { padding: 14px 16px; border-bottom: 1px solid var(--border); font-size: 13px; font-weight: 700; }
+.release-li { display: flex; gap: 10px; align-items: center; padding: 10px 16px; border-bottom: 1px solid var(--border); }
+.release-li:last-child { border-bottom: none; }
+.release-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+.release-info { flex: 1; min-width: 0; }
+.release-title { font-size: 12px; font-weight: 600; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.release-meta { font-size: 11px; color: var(--muted); }
+.release-date-badge { font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 999px; background: var(--accent-l); color: var(--accent-d); flex-shrink: 0; }
+
+/* ── STOFFPLAN TAB ── */
+.stoffplan-layout { display: grid; grid-template-columns: 210px 1fr; gap: 0; border: 1px solid var(--border); border-radius: var(--r); overflow: hidden; background: var(--card); min-height: 60vh; }
+@media (max-width: 800px) { .stoffplan-layout { grid-template-columns: 1fr; } }
+.sp-sidebar { border-right: 1px solid var(--border); display: flex; flex-direction: column; }
+.sp-sidebar-hd { padding: 12px 14px; border-bottom: 1px solid var(--border); font-size: 12px; font-weight: 700; color: var(--muted); }
+.sp-jg-list { flex: 1; overflow-y: auto; }
+.sp-jg-list::-webkit-scrollbar { width: 3px; }
+.sp-jg-li { display: flex; align-items: center; gap: 9px; padding: 10px 14px; border-bottom: 1px solid var(--border); cursor: pointer; transition: background 0.1s; }
+.sp-jg-li:last-child { border-bottom: none; }
+.sp-jg-li:hover { background: var(--bg); }
+.sp-jg-li.active { background: var(--accent-l); }
+.sp-jg-li.active .sp-jg-name { color: var(--accent-d); font-weight: 700; }
+.sp-jg-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+.sp-jg-name { font-size: 13px; font-weight: 600; color: var(--text); }
+.sp-jg-count { font-size: 11px; color: var(--muted); margin-left: auto; }
+
+.sp-main { display: flex; flex-direction: column; }
+.sp-toolbar { padding: 12px 16px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.sp-search { flex: 1; min-width: 150px; border: 1px solid var(--border); border-radius: 9px; padding: 7px 12px; font-family: var(--font); font-size: 13px; background: var(--bg); color: var(--text); outline: none; }
+.sp-search:focus { border-color: var(--accent); }
+.sp-filter-pills { display: flex; gap: 5px; flex-wrap: wrap; }
+.sp-pill { font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 999px; border: 1.5px solid var(--border); background: none; cursor: pointer; color: var(--muted); font-family: var(--font); transition: all 0.12s; }
+.sp-pill.active { color: #fff; border-color: transparent; }
+.sp-pill:hover:not(.active) { border-color: var(--accent); color: var(--accent-d); }
+.sp-add-btn { background: var(--accent); color: #fff; border: none; border-radius: 9px; padding: 7px 14px; font-family: var(--font); font-size: 12px; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 5px; white-space: nowrap; transition: background 0.12s; }
+.sp-add-btn:hover { background: var(--accent-d); }
+
+.sp-content { flex: 1; overflow-y: auto; padding: 14px 16px; }
+.sp-content::-webkit-scrollbar { width: 4px; }
+.sp-content::-webkit-scrollbar-thumb { background: #e0e0e0; border-radius: 2px; }
+.sp-fach-group { margin-bottom: 20px; }
+.sp-fach-label { font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 4px 10px; border-radius: 6px; display: inline-flex; align-items: center; gap: 6px; margin-bottom: 9px; color: #fff; }
+.sp-table { width: 100%; border-collapse: collapse; }
+.sp-table th { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); padding: 6px 10px; text-align: left; border-bottom: 1px solid var(--border); }
+.sp-table td { padding: 9px 10px; border-bottom: 1px solid var(--border); font-size: 12px; vertical-align: middle; }
+.sp-table tr:last-child td { border-bottom: none; }
+.sp-table tr:hover td { background: var(--bg); }
+.sp-type-badge { font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 5px; display: inline-block; }
+.sp-type-video { background: var(--blue-l); color: var(--blue); }
+.sp-type-aufgabe { background: var(--teal-l); color: var(--teal); }
+.sp-type-quiz { background: var(--amber-l); color: var(--amber); }
+.sp-status-badge { font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 5px; display: inline-block; }
+.sp-status-live { background: var(--teal-l); color: var(--teal); }
+.sp-status-geplant { background: var(--amber-l); color: var(--amber); }
+.sp-status-entwurf { background: var(--bg); color: var(--muted); border: 1px solid var(--border); }
+.sp-action-btn { background: none; border: 1px solid var(--border); border-radius: 6px; padding: 3px 7px; font-size: 11px; cursor: pointer; color: var(--muted); font-family: var(--font); transition: all 0.1s; margin-right: 3px; }
+.sp-action-btn:hover { background: var(--accent-l); color: var(--accent-d); border-color: var(--accent); }
+.sp-action-btn.del:hover { background: var(--red-l); color: var(--red); border-color: var(--red); }
+.sp-empty { padding: 40px; text-align: center; color: var(--muted); font-size: 13px; }
+
+/* ── ADMIN CALENDAR (Freischaltung) ── */
+.admin-cal-toolbar { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-bottom: 16px; }
+.admin-cal-filter { display: flex; gap: 6px; flex-wrap: wrap; flex: 1; }
+.admin-cal-label { font-size: 11px; font-weight: 700; color: var(--muted); align-self: center; white-space: nowrap; }
+.acal-pill { font-size: 11px; font-weight: 700; padding: 5px 12px; border-radius: 999px; border: 1.5px solid var(--border); background: none; cursor: pointer; color: var(--muted); font-family: var(--font); transition: all 0.12s; }
+.acal-pill.active { color: #fff; border-color: transparent; }
+.acal-pill:hover:not(.active) { border-color: var(--accent); color: var(--accent-d); }
+.acal-add-btn { background: var(--accent); color: #fff; border: none; border-radius: 9px; padding: 8px 16px; font-family: var(--font); font-size: 12px; font-weight: 700; cursor: pointer; white-space: nowrap; transition: background 0.12s; }
+.acal-add-btn:hover { background: var(--accent-d); }
+
+/* release side panel items */
+.rel-eli { background: var(--bg); border-radius: var(--r-sm); border: 1px solid var(--border); padding: 10px 12px; margin-bottom: 8px; display: flex; align-items: flex-start; gap: 9px; }
+.rel-eli:last-child { margin-bottom: 0; }
+.rel-ecb { width: 3px; min-height: 34px; border-radius: 2px; flex-shrink: 0; }
+.rel-body { flex: 1; min-width: 0; }
+.rel-title { font-size: 13px; font-weight: 600; }
+.rel-meta { font-size: 11px; color: var(--muted); margin-top: 2px; }
+.rel-badges { display: flex; gap: 5px; margin-top: 5px; flex-wrap: wrap; }
+.rel-ea { margin-left: auto; display: flex; gap: 4px; flex-shrink: 0; }
+
+/* ── ADMIN GROUPS / CHAT ── */
+.admin-chat-layout { display: grid; grid-template-columns: 270px 1fr; gap: 0; height: calc(100dvh - 64px - 86px); border-radius: var(--r); border: 1px solid var(--border); overflow: hidden; background: var(--card); }
+@media (max-width: 700px) { .admin-chat-layout { grid-template-columns: 1fr; height: auto; } }
+.admin-group-col { border-right: 1px solid var(--border); display: flex; flex-direction: column; overflow: hidden; }
+.agc-hd { padding: 12px 14px; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
+.agc-hd-title { font-size: 13px; font-weight: 700; }
+.agc-new-btn { background: var(--accent); color: #fff; border: none; border-radius: 7px; padding: 5px 10px; font-family: var(--font); font-size: 11px; font-weight: 700; cursor: pointer; transition: background 0.12s; }
+.agc-new-btn:hover { background: var(--accent-d); }
+.agc-search { padding: 8px 12px; border-bottom: 1px solid var(--border); }
+.agc-search input { width: 100%; border: 1px solid var(--border); border-radius: 8px; padding: 6px 10px; font-family: var(--font); font-size: 12px; background: var(--bg); color: var(--text); outline: none; }
+.agc-search input:focus { border-color: var(--accent); }
+.agc-list { flex: 1; overflow-y: auto; }
+.agc-list::-webkit-scrollbar { width: 3px; }
+.agc-list::-webkit-scrollbar-thumb { background: #e0e0e0; border-radius: 2px; }
+.agc-li { display: flex; gap: 10px; align-items: center; padding: 11px 14px; border-bottom: 1px solid var(--border); cursor: pointer; transition: background 0.1s; }
+.agc-li:last-child { border-bottom: none; }
+.agc-li:hover { background: var(--bg); }
+.agc-li.active { background: var(--accent-l); }
+
+/* Group detail panel */
+.admin-group-detail { flex: 1; display: flex; flex-direction: column; background: var(--bg); overflow: hidden; }
+.agd-empty { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; color: var(--muted); font-size: 14px; }
+.agd-header { padding: 12px 16px; background: var(--card); border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+.agd-hd-info { flex: 1; }
+.agd-hd-name { font-size: 14px; font-weight: 700; }
+.agd-hd-meta { font-size: 11px; color: var(--muted); }
+.agd-hd-actions { display: flex; gap: 7px; }
+.agd-hd-btn { background: var(--bg); border: 1px solid var(--border); border-radius: 7px; padding: 5px 10px; font-size: 11px; font-weight: 700; cursor: pointer; color: var(--muted); font-family: var(--font); transition: all 0.12s; }
+.agd-hd-btn:hover { border-color: var(--accent); color: var(--accent-d); background: var(--accent-l); }
+.agd-hd-btn.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+.agd-hd-btn.primary:hover { background: var(--accent-d); }
+
+/* Group tabs */
+.agd-tabs { display: flex; border-bottom: 1px solid var(--border); background: var(--card); padding: 0 16px; flex-shrink: 0; }
+.agd-tab { padding: 10px 14px; font-size: 12px; font-weight: 700; color: var(--muted); cursor: pointer; border-bottom: 2px solid transparent; transition: all 0.12s; margin-bottom: -1px; }
+.agd-tab:hover { color: var(--text); }
+.agd-tab.active { color: var(--accent-d); border-bottom-color: var(--accent); }
+.agd-tab-panel { display: none; flex: 1; overflow: hidden; }
+.agd-tab-panel.active { display: flex; flex-direction: column; }
+
+/* Chat panel inside group */
+.agd-chat-messages { flex: 1; overflow-y: auto; padding: 14px 16px; display: flex; flex-direction: column; gap: 10px; }
+.agd-chat-messages::-webkit-scrollbar { width: 4px; }
+.agd-chat-messages::-webkit-scrollbar-thumb { background: #e0e0e0; border-radius: 2px; }
+.agd-msg-admin { align-self: flex-end; display: flex; gap: 7px; align-items: flex-end; max-width: 75%; flex-direction: row-reverse; }
+.agd-msg-user { align-self: flex-start; display: flex; gap: 7px; align-items: flex-end; max-width: 75%; }
+.agd-bubble-admin { background: var(--accent); color: #fff; padding: 9px 13px; border-radius: 16px; border-bottom-right-radius: 4px; font-size: 13px; line-height: 1.45; }
+.agd-bubble-user { background: var(--card); color: var(--text); padding: 9px 13px; border-radius: 16px; border-bottom-left-radius: 4px; font-size: 13px; line-height: 1.45; }
+.agd-msg-time { font-size: 10px; color: var(--muted); padding: 0 4px; white-space: nowrap; }
+.agd-msg-author { font-size: 10px; font-weight: 700; color: var(--muted); padding: 0 4px; }
+.agd-input-row { padding: 12px 14px; border-top: 1px solid var(--border); background: var(--card); display: flex; gap: 10px; align-items: center; flex-shrink: 0; }
+.agd-input { flex: 1; border: 1px solid var(--border); border-radius: 22px; padding: 9px 14px; font-family: var(--font); font-size: 13px; background: var(--bg); color: var(--text); outline: none; }
+.agd-input:focus { border-color: var(--accent); }
+.agd-send-btn { background: var(--accent); border: none; border-radius: 50%; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #fff; font-size: 15px; transition: background 0.12s; flex-shrink: 0; }
+.agd-send-btn:hover { background: var(--accent-d); }
+
+/* Members panel */
+.agd-members-panel { flex: 1; overflow-y: auto; padding: 14px 16px; }
+.agd-members-panel::-webkit-scrollbar { width: 4px; }
+.agd-members-panel::-webkit-scrollbar-thumb { background: #e0e0e0; border-radius: 2px; }
+.member-li { display: flex; align-items: center; gap: 10px; padding: 9px 0; border-bottom: 1px solid var(--border); }
+.member-li:last-child { border-bottom: none; }
+.member-av { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #fff; flex-shrink: 0; }
+.member-name { font-size: 13px; font-weight: 600; flex: 1; }
+.member-role { font-size: 11px; color: var(--muted); }
+.member-remove { background: none; border: 1px solid var(--border); border-radius: 6px; padding: 3px 8px; font-size: 11px; cursor: pointer; color: var(--muted); font-family: var(--font); transition: all 0.1s; }
+.member-remove:hover { background: var(--red-l); color: var(--red); border-color: var(--red); }
+.agd-members-add { padding: 12px 16px; border-top: 1px solid var(--border); background: var(--card); display: flex; gap: 8px; flex-shrink: 0; }
+.agd-members-add input { flex: 1; border: 1px solid var(--border); border-radius: 9px; padding: 7px 12px; font-family: var(--font); font-size: 12px; background: var(--bg); color: var(--text); outline: none; }
+.agd-members-add input:focus { border-color: var(--accent); }
+.agd-members-add button { background: var(--accent); color: #fff; border: none; border-radius: 9px; padding: 7px 14px; font-family: var(--font); font-size: 12px; font-weight: 700; cursor: pointer; white-space: nowrap; }
+
+/* Tasks / Quizzes panel */
+.agd-tasks-panel { flex: 1; overflow-y: auto; padding: 14px 16px; display: flex; flex-direction: column; gap: 10px; }
+.agd-tasks-panel::-webkit-scrollbar { width: 4px; }
+.agd-tasks-panel::-webkit-scrollbar-thumb { background: #e0e0e0; border-radius: 2px; }
+.task-item { background: var(--card); border: 1px solid var(--border); border-radius: var(--r); padding: 14px 16px; }
+.task-header { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 8px; }
+.task-title { font-size: 13px; font-weight: 700; flex: 1; }
+.task-type-badge { font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 999px; flex-shrink: 0; }
+.task-type-aufgabe { background: var(--teal-l); color: var(--teal); }
+.task-type-quiz { background: var(--amber-l); color: var(--amber); }
+.task-desc { font-size: 12px; color: var(--muted); margin-bottom: 10px; line-height: 1.5; }
+.task-footer { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.task-deadline { font-size: 11px; font-weight: 600; color: var(--text); }
+.task-deadline-label { color: var(--muted); }
+.task-submissions { font-size: 11px; color: var(--muted); }
+.task-progress-bar { flex: 1; height: 5px; background: var(--bg); border-radius: 3px; min-width: 60px; overflow: hidden; }
+.task-progress-fill { height: 100%; background: var(--teal); border-radius: 3px; }
+.task-actions { display: flex; gap: 6px; margin-left: auto; }
+.agd-tasks-footer { padding: 12px 16px; border-top: 1px solid var(--border); background: var(--card); display: flex; gap: 8px; flex-shrink: 0; }
+.agd-task-add-btn { flex: 1; border: 1.5px dashed var(--border); background: none; border-radius: 9px; padding: 9px; font-family: var(--font); font-size: 12px; font-weight: 700; color: var(--muted); cursor: pointer; transition: all 0.12s; }
+.agd-task-add-btn:hover { border-color: var(--accent); color: var(--accent-d); background: var(--accent-l); }
+
+/* Quiz items */
+.quiz-q-item { background: var(--bg); border: 1px solid var(--border); border-radius: var(--r-sm); padding: 10px 12px; margin-top: 8px; }
+.quiz-q-text { font-size: 12px; font-weight: 600; margin-bottom: 7px; }
+.quiz-opt-list { display: flex; flex-direction: column; gap: 5px; }
+.quiz-opt { display: flex; align-items: center; gap: 7px; font-size: 12px; color: var(--muted); }
+.quiz-opt.correct { color: var(--teal); font-weight: 600; }
+.quiz-opt-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--border); flex-shrink: 0; }
+.quiz-opt.correct .quiz-opt-dot { background: var(--teal); }
+
+/* ── ADMIN MODALS ── */
+.admin-mo { position: fixed; inset: 0; z-index: 250; background: rgba(0,0,0,0.35); display: none; align-items: center; justify-content: center; padding: 20px; }
+.admin-mo.open { display: flex; }
+.admin-md { background: var(--card); border-radius: 18px; padding: 24px; width: 100%; max-width: 480px; box-shadow: 0 20px 60px rgba(0,0,0,0.2); animation: pi 0.17s ease; max-height: 90vh; overflow-y: auto; }
+.admin-md::-webkit-scrollbar { width: 4px; }
+.admin-md::-webkit-scrollbar-thumb { background: #e0e0e0; border-radius: 2px; }
+.admin-md h3 { font-size: 16px; font-weight: 700; margin-bottom: 16px; }
+.admin-md label { font-size: 11px; font-weight: 700; color: var(--muted); display: block; margin-bottom: 4px; margin-top: 12px; }
+.admin-md input, .admin-md select, .admin-md textarea { width: 100%; border: 1px solid var(--border); border-radius: 9px; padding: 9px 12px; font-family: var(--font); font-size: 13px; background: var(--bg); color: var(--text); outline: none; }
+.admin-md textarea { resize: vertical; min-height: 70px; }
+.admin-md input:focus, .admin-md select:focus, .admin-md textarea:focus { border-color: var(--accent); }
+.admin-md-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.admin-mbs { display: flex; gap: 8px; margin-top: 20px; }
+.admin-mb { flex: 1; border: none; border-radius: 10px; padding: 11px; font-family: var(--font); font-size: 13px; font-weight: 600; cursor: pointer; transition: background 0.12s; }
+.admin-mb.p { background: var(--accent); color: #fff; } .admin-mb.p:hover { background: var(--accent-d); }
+.admin-mb.s { background: var(--bg); color: var(--muted); } .admin-mb.s:hover { background: #e4e2de; }
+.quiz-builder { margin-top: 14px; display: flex; flex-direction: column; gap: 10px; }
+.quiz-q-builder { background: var(--bg); border: 1px solid var(--border); border-radius: 10px; padding: 12px; }
+.quiz-q-builder-hd { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+.quiz-q-num { font-size: 11px; font-weight: 700; color: var(--muted); }
+.quiz-q-remove { background: none; border: none; cursor: pointer; color: var(--muted); font-size: 14px; margin-left: auto; }
+.quiz-q-remove:hover { color: var(--red); }
+.add-q-btn { background: none; border: 1.5px dashed var(--border); border-radius: 9px; padding: 8px; font-family: var(--font); font-size: 12px; font-weight: 700; color: var(--muted); cursor: pointer; transition: all 0.12s; }
+.add-q-btn:hover { border-color: var(--accent); color: var(--accent-d); }
+
+@media (prefers-color-scheme: dark) {
+  .admin-md input, .admin-md select, .admin-md textarea { background: #0F1117; }
+  .admin-mo { background: rgba(0,0,0,0.5); }
+  .sp-jg-li:hover { background: #22263A; }
+  .agc-li:hover { background: #22263A; }
+}
 </style>
 </head>
 <body>
@@ -396,6 +674,8 @@ html, body { height: 100%; font-family: var(--font); background: var(--bg); colo
       </div>
     </div>
     <nav class="sb-nav">
+      <!-- STUDENT NAV -->
+      <div class="student-nav">
       <div class="sb-section">Hauptmenü</div>
       <div class="sni active" data-tab="home">
         <svg viewBox="0 0 24 24"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/><path d="M9 21V12h6v9"/></svg>
@@ -423,14 +703,49 @@ html, body { height: 100%; font-family: var(--font); background: var(--bg); colo
         <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
         <span class="sni-label">Profil</span>
       </div>
+      </div><!-- /student-nav -->
+
+      <!-- ADMIN NAV -->
+      <div class="admin-nav">
+        <div class="sb-section">Admin Bereich</div>
+        <div class="sni" data-tab="admin-home">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
+          <span class="sni-label">Übersicht</span>
+        </div>
+        <div class="sni" data-tab="admin-stoffplan">
+          <svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="13" y2="16"/></svg>
+          <span class="sni-label">Stoffplan</span>
+        </div>
+        <div class="sni" data-tab="admin-kalender">
+          <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="4" x2="9" y2="9"/><line x1="15" y1="4" x2="15" y2="9"/><circle cx="12" cy="15" r="2"/></svg>
+          <span class="sni-label">Freischaltung</span>
+        </div>
+        <div class="sb-section">Kommunikation</div>
+        <div class="sni" data-tab="admin-messages">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+          <span class="sni-label">Gruppen</span>
+        </div>
+        <div class="sb-section">Konto</div>
+        <div class="sni" data-tab="profil">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+          <span class="sni-label">Profil</span>
+        </div>
+      </div><!-- /admin-nav -->
     </nav>
+    <button class="mode-toggle" onclick="toggleAdminMode()">
+      <div class="mode-toggle-dot"></div>
+      <span id="mode-toggle-label">Admin Modus</span>
+    </button>
   </aside>
 
   <!-- ── MAIN ── -->
   <div class="main">
     <div class="main-header">
       <div>
-        <div class="main-title" id="page-title">Übersicht</div>
+        <div style="display:flex;align-items:center;gap:8px">
+          <div class="main-title" id="page-title">Übersicht</div>
+          <span class="admin-badge">Admin</span>
+        </div>
         <div class="main-sub" id="page-sub">Guten Morgen, Alex 👋</div>
       </div>
       <div class="mob-av" style="display:none">AJ</div>
@@ -549,6 +864,110 @@ html, body { height: 100%; font-family: var(--font); background: var(--bg); colo
       </div>
 
     </div><!-- /main-scroll -->
+
+  <!-- ═══════════════════════════════════════
+       ADMIN TAB PANELS
+  ═══════════════════════════════════════ -->
+  <!-- ADMIN HOME -->
+  <div id="admin-main-scroll" style="flex:1;overflow-y:auto;overflow-x:hidden;padding:22px 28px 32px;display:none">
+
+    <div class="tp active" id="tab-admin-home">
+      <div class="admin-stats-row" id="admin-stats"></div>
+      <div class="sl" style="margin-top:0">Jahrgänge &amp; Klassen</div>
+      <div class="jahrgang-grid" id="jahrgang-grid"></div>
+      <div class="admin-home-grid">
+        <div>
+          <div class="sl" style="margin-top:0">Nächste Freischaltungen</div>
+          <div class="admin-upcoming-releases">
+            <div class="aur-hd">📅 Geplante Veröffentlichungen</div>
+            <div id="admin-upcoming-releases"></div>
+          </div>
+        </div>
+        <div>
+          <div class="sl" style="margin-top:0">Aktivität</div>
+          <div class="scroll-list" id="admin-activity-list"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ADMIN STOFFPLAN -->
+    <div class="tp" id="tab-admin-stoffplan">
+      <div class="sl-row" style="margin-top:0">
+        <span class="sl">Stoffplan verwalten</span>
+        <button class="sp-add-btn" onclick="openAddMaterial()">＋ Material hinzufügen</button>
+      </div>
+      <div class="stoffplan-layout">
+        <div class="sp-sidebar">
+          <div class="sp-sidebar-hd">Klassen</div>
+          <div class="sp-jg-list" id="sp-jg-list"></div>
+        </div>
+        <div class="sp-main">
+          <div class="sp-toolbar">
+            <input class="sp-search" id="sp-search" placeholder="Material suchen…" oninput="renderStoffplan()">
+            <div class="sp-filter-pills" id="sp-fach-pills"></div>
+          </div>
+          <div class="sp-content" id="sp-content">
+            <div class="sp-empty">Klasse auswählen, um Materialien zu sehen</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ADMIN KALENDER (Freischaltung) -->
+    <div class="tp" id="tab-admin-kalender">
+      <div class="admin-cal-toolbar">
+        <span class="admin-cal-label">Jahrgang:</span>
+        <div class="admin-cal-filter" id="acal-jg-pills"></div>
+        <span class="admin-cal-label" style="margin-left:4px">Fach:</span>
+        <div class="admin-cal-filter" id="acal-fach-pills"></div>
+        <button class="acal-add-btn" onclick="openAddRelease()">＋ Freischaltung</button>
+      </div>
+      <div class="cal-wrap">
+        <div>
+          <div class="cal-panel">
+            <div class="chead">
+              <button class="cnb" id="acp">‹</button>
+              <span class="cmt" id="act"></span>
+              <button class="cnb" id="acn">›</button>
+            </div>
+            <div class="cgw">
+              <div class="wr"><div class="wl">Mo</div><div class="wl">Di</div><div class="wl">Mi</div><div class="wl">Do</div><div class="wl">Fr</div><div class="wl">Sa</div><div class="wl">So</div></div>
+              <div class="cg" id="acg"></div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="ev-side">
+            <div class="ev-side-hd" id="acsl">Tag auswählen</div>
+            <div class="ev-side-body" id="acel"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ADMIN GRUPPEN / MESSAGES -->
+    <div class="tp" id="tab-admin-messages">
+      <div class="admin-chat-layout">
+        <div class="admin-group-col">
+          <div class="agc-hd">
+            <span class="agc-hd-title">Gruppen</span>
+            <button class="agc-new-btn" onclick="openNewGroup()">＋ Neue Gruppe</button>
+          </div>
+          <div class="agc-search">
+            <input placeholder="Gruppe suchen…" oninput="filterGroups(this.value)" id="group-search">
+          </div>
+          <div class="agc-list" id="agc-list"></div>
+        </div>
+        <div id="admin-group-detail">
+          <div class="agd-empty">
+            <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+            <span>Gruppe auswählen</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /admin-main-scroll -->
   </div><!-- /main -->
 
   <!-- BOTTOM NAV (mobile) -->
@@ -578,6 +997,156 @@ html, body { height: 100%; font-family: var(--font); background: var(--bg); colo
     <div class="mbs">
       <button class="mb s" id="mcancel">Abbrechen</button>
       <button class="mb p" id="msave">Speichern</button>
+    </div>
+  </div>
+</div>
+
+<!-- ADD MATERIAL MODAL -->
+<div class="admin-mo" id="modal-material">
+  <div class="admin-md">
+    <h3 id="material-modal-title">Material hinzufügen</h3>
+    <div class="admin-md-row">
+      <div>
+        <label>Jahrgang</label>
+        <select id="mat-jahrgang"></select>
+      </div>
+      <div>
+        <label>Fach</label>
+        <select id="mat-fach"></select>
+      </div>
+    </div>
+    <div class="admin-md-row">
+      <div>
+        <label>Typ</label>
+        <select id="mat-type">
+          <option value="video">🎥 Video</option>
+          <option value="aufgabe">📋 Aufgabe</option>
+          <option value="quiz">🧠 Quiz</option>
+        </select>
+      </div>
+      <div>
+        <label>Status</label>
+        <select id="mat-status">
+          <option value="entwurf">Entwurf</option>
+          <option value="geplant">Geplant</option>
+          <option value="live">Live</option>
+        </select>
+      </div>
+    </div>
+    <label>Titel</label>
+    <input type="text" id="mat-title" placeholder="z.B. Brüche – Einführung">
+    <label>Freischaltdatum</label>
+    <input type="date" id="mat-date">
+    <div class="admin-mbs">
+      <button class="admin-mb s" onclick="closeModal('modal-material')">Abbrechen</button>
+      <button class="admin-mb p" onclick="saveMaterial()">Speichern</button>
+    </div>
+  </div>
+</div>
+
+<!-- ADD RELEASE MODAL -->
+<div class="admin-mo" id="modal-release">
+  <div class="admin-md">
+    <h3>Freischaltung planen</h3>
+    <div class="admin-md-row">
+      <div>
+        <label>Jahrgang</label>
+        <select id="rel-jahrgang"></select>
+      </div>
+      <div>
+        <label>Fach / Kanal</label>
+        <select id="rel-fach"></select>
+      </div>
+    </div>
+    <div class="admin-md-row">
+      <div>
+        <label>Typ</label>
+        <select id="rel-type">
+          <option value="video">🎥 Video</option>
+          <option value="aufgabe">📋 Aufgabe</option>
+          <option value="quiz">🧠 Quiz</option>
+        </select>
+      </div>
+      <div>
+        <label>Uhrzeit</label>
+        <input type="time" id="rel-time" value="08:00">
+      </div>
+    </div>
+    <label>Titel</label>
+    <input type="text" id="rel-title" placeholder="Titel des Inhalts">
+    <label>Datum</label>
+    <input type="date" id="rel-date">
+    <div class="admin-mbs">
+      <button class="admin-mb s" onclick="closeModal('modal-release')">Abbrechen</button>
+      <button class="admin-mb p" onclick="saveRelease()">Speichern</button>
+    </div>
+  </div>
+</div>
+
+<!-- NEW GROUP MODAL -->
+<div class="admin-mo" id="modal-newgroup">
+  <div class="admin-md">
+    <h3>Neue Gruppe erstellen</h3>
+    <label>Gruppenname</label>
+    <input type="text" id="ng-name" placeholder="z.B. 5A – Mathe">
+    <div class="admin-md-row">
+      <div>
+        <label>Jahrgang</label>
+        <select id="ng-jahrgang"></select>
+      </div>
+      <div>
+        <label>Fach</label>
+        <select id="ng-fach"></select>
+      </div>
+    </div>
+    <div class="admin-mbs">
+      <button class="admin-mb s" onclick="closeModal('modal-newgroup')">Abbrechen</button>
+      <button class="admin-mb p" onclick="saveNewGroup()">Erstellen</button>
+    </div>
+  </div>
+</div>
+
+<!-- ADD TASK MODAL -->
+<div class="admin-mo" id="modal-task">
+  <div class="admin-md">
+    <h3 id="task-modal-title">Aufgabe erstellen</h3>
+    <label>Titel</label>
+    <input type="text" id="task-title" placeholder="Aufgabentitel">
+    <label>Beschreibung</label>
+    <textarea id="task-desc" placeholder="Aufgabenbeschreibung…" rows="3"></textarea>
+    <div class="admin-md-row">
+      <div>
+        <label>Fällig am</label>
+        <input type="date" id="task-deadline">
+      </div>
+      <div>
+        <label>Punkte</label>
+        <input type="number" id="task-points" value="10" min="1" max="100">
+      </div>
+    </div>
+    <div class="admin-mbs">
+      <button class="admin-mb s" onclick="closeModal('modal-task')">Abbrechen</button>
+      <button class="admin-mb p" onclick="saveTask()">Veröffentlichen</button>
+    </div>
+  </div>
+</div>
+
+<!-- ADD QUIZ MODAL -->
+<div class="admin-mo" id="modal-quiz">
+  <div class="admin-md">
+    <h3>Quiz erstellen</h3>
+    <label>Titel</label>
+    <input type="text" id="quiz-title" placeholder="Quiz-Titel">
+    <label>Frist</label>
+    <input type="date" id="quiz-deadline">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-top:14px;margin-bottom:4px">
+      <span style="font-size:12px;font-weight:700;color:var(--muted)">FRAGEN</span>
+      <button class="add-q-btn" onclick="addQuizQuestion()">＋ Frage hinzufügen</button>
+    </div>
+    <div class="quiz-builder" id="quiz-builder"></div>
+    <div class="admin-mbs">
+      <button class="admin-mb s" onclick="closeModal('modal-quiz')">Abbrechen</button>
+      <button class="admin-mb p" onclick="saveQuiz()">Veröffentlichen</button>
     </div>
   </div>
 </div>
@@ -1131,6 +1700,888 @@ document.getElementById('msave').addEventListener('click',()=>{
 });
 rc();rel();rhu();
 
+// ════════════════════════════════════════════════════════
+// ── ADMIN DATA ──
+// ════════════════════════════════════════════════════════
+
+const FACH_COLORS = {
+  'Mathe':'#5B50D6','Deutsch':'#E24B4A','Englisch':'#2B7FD4',
+  'Physik':'#1D9E75','Biologie':'#7C3AED','Chemie':'#E8960A',
+  'Geschichte':'#085041','Kunst':'#E8960A','Sport':'#2B7FD4','Musik':'#5B50D6','Latein':'#64748B'
+};
+const FAECHER = Object.keys(FACH_COLORS);
+const JG_GRADS = ['#5B50D6','#1D9E75','#E8960A','#2B7FD4','#7C3AED','#E24B4A','#085041'];
+
+const JAHRGAENGE = [
+  { id:'5A', year:5, section:'A', teacher:'Dr. Müller',    students:28, progress:72, subjects:['Mathe','Deutsch','Englisch','Biologie','Geschichte'] },
+  { id:'5B', year:5, section:'B', teacher:'Fr. Schmidt',   students:26, progress:65, subjects:['Mathe','Deutsch','Englisch','Physik','Kunst'] },
+  { id:'6A', year:6, section:'A', teacher:'Hr. Weber',     students:30, progress:48, subjects:['Mathe','Deutsch','Englisch','Chemie','Sport'] },
+  { id:'6B', year:6, section:'B', teacher:'Fr. Klein',     students:27, progress:51, subjects:['Mathe','Deutsch','Englisch','Biologie','Musik'] },
+  { id:'7A', year:7, section:'A', teacher:'Dr. Braun',     students:29, progress:33, subjects:['Mathe','Deutsch','Englisch','Physik','Latein'] },
+  { id:'7B', year:7, section:'B', teacher:'Hr. Fischer',   students:25, progress:29, subjects:['Mathe','Deutsch','Englisch','Chemie','Kunst'] },
+  { id:'8A', year:8, section:'A', teacher:'Fr. Hoffmann',  students:24, progress:18, subjects:['Mathe','Deutsch','Englisch','Physik','Geschichte'] },
+];
+
+const T0 = new Date();
+function fd(offset=0){ const d=new Date(T0); d.setDate(d.getDate()+offset); return f(d.getFullYear(),d.getMonth(),d.getDate()); }
+
+let matId = 100;
+const MATERIALIEN = [
+  {id:1,  jahrgang:'5A', fach:'Mathe',    type:'video',   title:'Brüche – Einführung',          releaseDate:fd(-8),  status:'live'},
+  {id:2,  jahrgang:'5A', fach:'Mathe',    type:'aufgabe', title:'Brüche Übungsblatt 1',          releaseDate:fd(-6),  status:'live'},
+  {id:3,  jahrgang:'5A', fach:'Mathe',    type:'quiz',    title:'Quiz: Grundrechenarten',        releaseDate:fd(3),   status:'geplant'},
+  {id:4,  jahrgang:'5A', fach:'Deutsch',  type:'video',   title:'Aufsatz schreiben – Grundlagen',releaseDate:fd(-10), status:'live'},
+  {id:5,  jahrgang:'5A', fach:'Deutsch',  type:'aufgabe', title:'Leseprobe: Max und Moritz',     releaseDate:fd(-3),  status:'live'},
+  {id:6,  jahrgang:'5A', fach:'Englisch', type:'video',   title:'Simple Past – Einführung',      releaseDate:fd(-2),  status:'live'},
+  {id:7,  jahrgang:'5A', fach:'Englisch', type:'aufgabe', title:'Vocabulary Unit 4',             releaseDate:fd(1),   status:'geplant'},
+  {id:8,  jahrgang:'5A', fach:'Englisch', type:'quiz',    title:'Unit 4 Quiz',                   releaseDate:fd(5),   status:'geplant'},
+  {id:9,  jahrgang:'5B', fach:'Mathe',    type:'video',   title:'Geometrie – Dreiecke',          releaseDate:fd(-7),  status:'live'},
+  {id:10, jahrgang:'5B', fach:'Mathe',    type:'aufgabe', title:'Dreieck Übungsblatt',           releaseDate:fd(-4),  status:'live'},
+  {id:11, jahrgang:'5B', fach:'Deutsch',  type:'video',   title:'Grammatik: Satzglieder',        releaseDate:fd(-9),  status:'live'},
+  {id:12, jahrgang:'5B', fach:'Physik',   type:'video',   title:'Kräfte und Bewegung',           releaseDate:fd(4),   status:'geplant'},
+  {id:13, jahrgang:'6A', fach:'Mathe',    type:'video',   title:'Prozentrechnung Basics',        releaseDate:fd(-5),  status:'live'},
+  {id:14, jahrgang:'6A', fach:'Chemie',   type:'video',   title:'Atommodell Einführung',         releaseDate:fd(-1),  status:'live'},
+  {id:15, jahrgang:'6A', fach:'Chemie',   type:'aufgabe', title:'Periodensystem Übung',          releaseDate:fd(6),   status:'geplant'},
+  {id:16, jahrgang:'7A', fach:'Mathe',    type:'video',   title:'Lineare Gleichungen',           releaseDate:fd(-3),  status:'live'},
+  {id:17, jahrgang:'7A', fach:'Physik',   type:'video',   title:'Elektrizitätslehre I',          releaseDate:fd(0),   status:'live'},
+  {id:18, jahrgang:'7A', fach:'Physik',   type:'quiz',    title:'Quiz: Stromkreise',             releaseDate:fd(7),   status:'geplant'},
+  {id:19, jahrgang:'6B', fach:'Biologie', type:'video',   title:'Zellen – Aufbau und Funktion',  releaseDate:fd(2),   status:'geplant'},
+  {id:20, jahrgang:'7B', fach:'Chemie',   type:'aufgabe', title:'Säuren und Basen',              releaseDate:fd(8),   status:'entwurf'},
+];
+
+const ADMIN_GROUPS = [
+  {id:1, name:'5A – Mathe',        jahrgang:'5A', fach:'Mathe',    members:28, color:'#5B50D6', lastMsg:'Neue Aufgabe verfügbar',    lastTime:'10:30', unread:5},
+  {id:2, name:'5A – Deutsch',      jahrgang:'5A', fach:'Deutsch',  members:28, color:'#E24B4A', lastMsg:'Video freigeschaltet',       lastTime:'09:15', unread:0},
+  {id:3, name:'5B – Mathe',        jahrgang:'5B', fach:'Mathe',    members:26, color:'#5B50D6', lastMsg:'Quiz startet morgen',        lastTime:'Gestern', unread:2},
+  {id:4, name:'6A – Chemie',       jahrgang:'6A', fach:'Chemie',   members:30, color:'#E8960A', lastMsg:'Atommodell Video online',    lastTime:'Gestern', unread:0},
+  {id:5, name:'7A – Physik',       jahrgang:'7A', fach:'Physik',   members:29, color:'#1D9E75', lastMsg:'Lernmaterial hochgeladen',   lastTime:'Mo', unread:0},
+  {id:6, name:'Alle Lehrkräfte',   jahrgang:null, fach:null,       members:12, color:'#7C3AED', lastMsg:'Stundenplanänderung KW 22',  lastTime:'Fr', unread:1},
+];
+
+let adminGroupMessages = {
+  1:[
+    {role:'out', text:'Guten Morgen Klasse 5A! Das neue Video zu Brüchen ist jetzt verfügbar.', time:'08:00', author:'Admin'},
+    {role:'in',  text:'Super, danke! Wann ist die Aufgabe fällig?', time:'08:05', author:'Lisa M.'},
+    {role:'out', text:'Die Aufgabe muss bis Freitag abgegeben werden.', time:'08:07', author:'Admin'},
+    {role:'in',  text:'Können wir die Aufgabe auch in der Gruppe besprechen?', time:'08:20', author:'Tom K.'},
+  ],
+  2:[{role:'out', text:'Das Aufsatz-Video ist jetzt verfügbar! Viel Spaß beim Lernen.', time:'09:00', author:'Admin'}],
+  3:[{role:'out', text:'Morgen startet euer Mathe-Quiz zu Dreiecken – noch Fragen?', time:'15:00', author:'Admin'},{role:'in', text:'Ja, wie lange haben wir Zeit?', time:'15:10', author:'Max B.'}],
+  4:[{role:'out', text:'Das Video zum Atommodell ist online – unbedingt anschauen!', time:'10:00', author:'Admin'}],
+  5:[{role:'out', text:'Neues Lernmaterial zur Elektrizitätslehre ist hochgeladen.', time:'11:00', author:'Admin'}],
+  6:[{role:'out', text:'Stundenplanänderung KW 22: Freitag entfällt die 5. Stunde.', time:'Fr', author:'Admin'}],
+};
+
+const ADMIN_TASKS = {
+  1:[
+    {id:1, type:'aufgabe', title:'Brüche Übungsblatt 1', desc:'Löst alle Aufgaben auf Seite 34–35 im Schulbuch.', deadline:fd(3), points:10, submissions:18, total:28},
+    {id:2, type:'quiz',    title:'Quiz: Grundrechenarten', desc:'5 Multiple-Choice-Fragen – Zeit: 15 Minuten.', deadline:fd(5), points:20, submissions:0,  total:28,
+      questions:[
+        {q:'Was ist 3/4 + 1/4?', opts:['1/2','1','3/8','2/4'], correct:1},
+        {q:'Wie lautet der gemeinsame Nenner von 1/3 und 1/4?', opts:['6','7','12','8'], correct:2},
+      ]},
+  ],
+  2:[
+    {id:3, type:'aufgabe', title:'Leseprobe: Max und Moritz', desc:'Lest Kapitel 1–3 und schreibt eine kurze Zusammenfassung.', deadline:fd(7), points:15, submissions:22, total:28},
+  ],
+  3:[
+    {id:4, type:'quiz', title:'Quiz: Dreiecke', desc:'Teste dein Wissen zu Dreiecksarten und -eigenschaften.', deadline:fd(1), points:20, submissions:14, total:26,
+      questions:[{q:'Ein Dreieck mit zwei gleich langen Seiten heißt?', opts:['Rechtwinklig','Gleichschenklig','Gleichseitig','Stumpfwinklig'], correct:1}]},
+  ],
+};
+
+const ADMIN_MEMBERS = {
+  1:[ {name:'Lisa Müller', initials:'LM', color:'#5B50D6', role:'Schülerin'},{name:'Tom Kohl', initials:'TK', color:'#1D9E75', role:'Schüler'},{name:'Anna Weber', initials:'AW', color:'#E8960A', role:'Schülerin'},{name:'Ben Schmidt', initials:'BS', color:'#2B7FD4', role:'Schüler'},{name:'Mia Braun', initials:'MB', color:'#7C3AED', role:'Schülerin'} ],
+  2:[ {name:'Lisa Müller', initials:'LM', color:'#5B50D6', role:'Schülerin'},{name:'Felix Hart', initials:'FH', color:'#E24B4A', role:'Schüler'} ],
+  3:[ {name:'Max Becker', initials:'MB', color:'#E8960A', role:'Schüler'},{name:'Sara Köhler', initials:'SK', color:'#1D9E75', role:'Schülerin'} ],
+};
+
+let activeAdminGroup = null;
+let activeAdminTab = 'chat';
+let adminGroupId = 10;
+let adminMat = null; // editing material id
+let spSelectedJg = null;
+let spSelectedFach = null;
+let acalVy = T0.getFullYear(), acalVm = T0.getMonth(), acalSel = null;
+let acalFilterJg = 'alle', acalFilterFach = 'alle';
+
+// ════════════════════════════════════════════════════════
+// ── ADMIN MODE TOGGLE ──
+// ════════════════════════════════════════════════════════
+let isAdmin = false;
+function toggleAdminMode() {
+  isAdmin = !isAdmin;
+  const app = document.querySelector('.app');
+  const ms  = document.getElementById('main-scroll');
+  const ams = document.getElementById('admin-main-scroll');
+  app.classList.toggle('admin-mode', isAdmin);
+  ms.style.display  = isAdmin ? 'none' : '';
+  ams.style.display = isAdmin ? '' : 'none';
+  document.getElementById('mode-toggle-label').textContent = isAdmin ? 'Schüler Modus' : 'Admin Modus';
+  if (isAdmin) {
+    document.querySelectorAll('.sni').forEach(n => n.classList.remove('active'));
+    const first = document.querySelector('.admin-nav .sni');
+    if (first) { first.classList.add('active'); adminSwitchTab('admin-home'); }
+  } else {
+    document.querySelectorAll('.sni').forEach(n => n.classList.remove('active'));
+    const first = document.querySelector('.student-nav .sni');
+    if (first) { first.classList.add('active'); switchTab('home'); }
+  }
+}
+
+function adminSwitchTab(tab) {
+  const ams = document.getElementById('admin-main-scroll');
+  ams.querySelectorAll('.tp').forEach(p => p.classList.remove('active'));
+  const el = document.getElementById('tab-'+tab);
+  if (el) el.classList.add('active');
+  ams.scrollTop = 0;
+  document.querySelectorAll('.admin-nav .sni').forEach(n =>
+    n.classList.toggle('active', n.dataset.tab === tab));
+  const INFO = {
+    'admin-home':      {title:'Admin Übersicht',  sub:'Jahrgänge, Klassen & Materialien'},
+    'admin-stoffplan': {title:'Stoffplan',         sub:'Lernmaterialien verwalten & planen'},
+    'admin-kalender':  {title:'Freischaltung',     sub:'Veröffentlichungstermine verwalten'},
+    'admin-messages':  {title:'Gruppen & Chat',    sub:'Gruppen, Aufgaben & Quizze verwalten'},
+    'profil':          {title:'Profil',            sub:'Alex Johnson · Admin'},
+  };
+  const i = INFO[tab]||{};
+  document.getElementById('page-title').textContent = i.title||tab;
+  document.getElementById('page-sub').textContent   = i.sub||'';
+}
+
+// ════════════════════════════════════════════════════════
+// ── ADMIN HOME ──
+// ════════════════════════════════════════════════════════
+function renderAdminStats() {
+  const totalSt = JAHRGAENGE.reduce((s,j)=>s+j.students,0);
+  const upcoming = MATERIALIEN.filter(m=>m.releaseDate>=fd(0)&&m.releaseDate<=fd(7)).length;
+  const open     = Object.values(ADMIN_TASKS).flat().filter(t=>t.submissions<t.total).length;
+  document.getElementById('admin-stats').innerHTML = [
+    {num:totalSt,             label:'Schüler gesamt',     sub:JAHRGAENGE.length+' Klassen',  cls:'a0'},
+    {num:JAHRGAENGE.length,   label:'Aktive Klassen',     sub:'Aktuelles Schuljahr',          cls:'a1'},
+    {num:upcoming,            label:'Freischaltungen',    sub:'Nächste 7 Tage',               cls:'a2'},
+    {num:open,                label:'Offene Abgaben',     sub:'Aufgaben & Quizze',            cls:'a3'},
+  ].map(s=>`<div class="admin-stat ${s.cls}">
+    <div class="admin-stat-num">${s.num}</div>
+    <div class="admin-stat-lbl">${s.label}</div>
+    <div class="admin-stat-sub">${s.sub}</div>
+  </div>`).join('');
+}
+
+function renderJahrgangeGrid() {
+  const grid = document.getElementById('jahrgang-grid');
+  grid.innerHTML = JAHRGAENGE.map((jg,i) => {
+    const col = JG_GRADS[i % JG_GRADS.length];
+    const chips = jg.subjects.map(s=>{
+      const c = FACH_COLORS[s]||'#64748B';
+      return `<span class="jg-fach-chip" style="background:${c}18;color:${c}">${s}</span>`;
+    }).join('');
+    const matCount = MATERIALIEN.filter(m=>m.jahrgang===jg.id).length;
+    const liveCount= MATERIALIEN.filter(m=>m.jahrgang===jg.id&&m.status==='live').length;
+    return `<div class="jg-card" onclick="adminOpenJg('${jg.id}')">
+      <div class="jg-header">
+        <div class="jg-badge" style="background:${col}">Kl.</div>
+        <div class="jg-actions">
+          <button class="jg-act-btn" onclick="event.stopPropagation();adminOpenStoffplan('${jg.id}')">Stoffplan</button>
+          <button class="jg-act-btn" onclick="event.stopPropagation();adminOpenFreischaltung('${jg.id}')">Termine</button>
+        </div>
+      </div>
+      <div class="jg-name">Klasse ${jg.id}</div>
+      <div class="jg-teacher">${jg.teacher} · ${jg.students} Schüler</div>
+      <div class="jg-subjects">${chips}</div>
+      <div class="jg-meta">
+        <div class="jg-meta-item">🎥 <span>${liveCount} Live</span></div>
+        <div class="jg-meta-item">📋 <span>${matCount} gesamt</span></div>
+      </div>
+      <div class="jg-progress-label">
+        <span>Stoffplan</span><span>${jg.progress}%</span>
+      </div>
+      <div class="jg-progress-bar">
+        <div class="jg-progress-fill" style="width:${jg.progress}%;background:${col}"></div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function adminOpenJg(id) { adminOpenStoffplan(id); }
+
+function adminOpenStoffplan(id) {
+  isAdmin = true;
+  document.querySelector('.app').classList.add('admin-mode');
+  document.getElementById('main-scroll').style.display='none';
+  document.getElementById('admin-main-scroll').style.display='';
+  document.getElementById('mode-toggle-label').textContent='Schüler Modus';
+  adminSwitchTab('admin-stoffplan');
+  spSelectedJg = id;
+  renderSpJgList();
+  renderStoffplan();
+}
+
+function adminOpenFreischaltung(id) {
+  isAdmin = true;
+  document.querySelector('.app').classList.add('admin-mode');
+  document.getElementById('main-scroll').style.display='none';
+  document.getElementById('admin-main-scroll').style.display='';
+  document.getElementById('mode-toggle-label').textContent='Schüler Modus';
+  adminSwitchTab('admin-kalender');
+  acalFilterJg = id;
+  renderAcalJgPills();
+  renderAcalFachPills();
+  acRc(); acRel();
+}
+
+function renderUpcomingReleases() {
+  const today = fd(0);
+  const upcoming = MATERIALIEN
+    .filter(m=>m.releaseDate>=today)
+    .sort((a,b)=>a.releaseDate.localeCompare(b.releaseDate))
+    .slice(0,8);
+  const el = document.getElementById('admin-upcoming-releases');
+  if (!upcoming.length) { el.innerHTML='<div class="release-li"><span class="release-meta">Keine geplanten Freischaltungen</span></div>'; return; }
+  el.innerHTML = upcoming.map(m=>{
+    const col = FACH_COLORS[m.fach]||'#64748B';
+    const typeIcon = {video:'🎥',aufgabe:'📋',quiz:'🧠'}[m.type]||'📄';
+    const [y,mo,d]=m.releaseDate.split('-').map(Number);
+    const dateStr = d+'. '+MONTHS[mo-1];
+    const isToday = m.releaseDate===today;
+    return `<div class="release-li">
+      <div class="release-dot" style="background:${col}"></div>
+      <div class="release-info">
+        <div class="release-title">${typeIcon} ${m.title}</div>
+        <div class="release-meta">${m.jahrgang} · ${m.fach}</div>
+      </div>
+      <div class="release-date-badge" style="${isToday?'background:var(--teal-l);color:var(--teal)':''}">${isToday?'Heute':dateStr}</div>
+    </div>`;
+  }).join('');
+}
+
+function renderAdminActivity() {
+  const el = document.getElementById('admin-activity-list');
+  const acts = [
+    {text:'Quiz in 5A – Mathe veröffentlicht',     sub:'Vor 30 Min · Admin', read:false},
+    {text:'Neues Video in 7A – Physik',             sub:'Vor 1 Std · Admin', read:false},
+    {text:'15 Abgaben eingegangen (5A – Aufgabe 1)',sub:'Vor 2 Std',         read:false},
+    {text:'Gruppe 6A – Chemie erstellt',            sub:'Gestern · Admin',   read:true},
+    {text:'Stundenplan-Hinweis gesendet',           sub:'Gestern · Admin',   read:true},
+  ];
+  el.innerHTML = acts.map(a=>`
+    <div class="li${a.read?' read':''}">
+      <div class="nd ${a.read?'dr':'dp'}"></div>
+      <div><p class="it">${a.text}</p><p class="is">${a.sub}</p></div>
+    </div>`).join('');
+}
+
+// ════════════════════════════════════════════════════════
+// ── STOFFPLAN TAB ──
+// ════════════════════════════════════════════════════════
+function renderSpJgList() {
+  const el = document.getElementById('sp-jg-list');
+  el.innerHTML = JAHRGAENGE.map((jg,i)=>{
+    const col = JG_GRADS[i%JG_GRADS.length];
+    const cnt = MATERIALIEN.filter(m=>m.jahrgang===jg.id).length;
+    return `<div class="sp-jg-li${spSelectedJg===jg.id?' active':''}" onclick="selectSpJg('${jg.id}')">
+      <div class="sp-jg-dot" style="background:${col}"></div>
+      <span class="sp-jg-name">Klasse ${jg.id}</span>
+      <span class="sp-jg-count">${cnt}</span>
+    </div>`;
+  }).join('');
+}
+
+function selectSpJg(id) {
+  spSelectedJg = id;
+  spSelectedFach = null;
+  renderSpJgList();
+  renderSpFachPills();
+  renderStoffplan();
+}
+
+function renderSpFachPills() {
+  const el = document.getElementById('sp-fach-pills');
+  if (!spSelectedJg) { el.innerHTML=''; return; }
+  const jg = JAHRGAENGE.find(j=>j.id===spSelectedJg);
+  if (!jg) return;
+  el.innerHTML = `<button class="sp-pill${!spSelectedFach?' active':''}" onclick="selectSpFach(null)" style="${!spSelectedFach?'background:var(--accent);color:#fff;border-color:var(--accent)':''}">Alle</button>`
+    + jg.subjects.map(s=>{
+      const col=FACH_COLORS[s]||'#64748B';
+      const active = spSelectedFach===s;
+      return `<button class="sp-pill${active?' active':''}" onclick="selectSpFach('${s}')"
+        style="${active?'background:'+col+';border-color:'+col:''}">${s}</button>`;
+    }).join('');
+}
+
+function selectSpFach(fach) {
+  spSelectedFach = fach;
+  renderSpFachPills();
+  renderStoffplan();
+}
+
+function renderStoffplan() {
+  const el = document.getElementById('sp-content');
+  if (!spSelectedJg) { el.innerHTML='<div class="sp-empty">Klasse auswählen, um Materialien zu sehen</div>'; return; }
+  const search = (document.getElementById('sp-search')||{}).value||'';
+  const jg = JAHRGAENGE.find(j=>j.id===spSelectedJg);
+  const mats = MATERIALIEN.filter(m=>
+    m.jahrgang===spSelectedJg &&
+    (!spSelectedFach || m.fach===spSelectedFach) &&
+    (!search || m.title.toLowerCase().includes(search.toLowerCase()) || m.fach.toLowerCase().includes(search.toLowerCase()))
+  );
+  if (!mats.length) { el.innerHTML='<div class="sp-empty">Keine Materialien gefunden</div>'; return; }
+  // Group by Fach
+  const byFach = {};
+  mats.forEach(m=>{ if(!byFach[m.fach]) byFach[m.fach]=[]; byFach[m.fach].push(m); });
+  el.innerHTML = Object.entries(byFach).map(([fach, items])=>{
+    const col = FACH_COLORS[fach]||'#64748B';
+    const rows = items.map(m=>{
+      const typeClass = 'sp-type-'+m.type;
+      const typeLabel = {video:'🎥 Video',aufgabe:'📋 Aufgabe',quiz:'🧠 Quiz'}[m.type]||m.type;
+      const stCls = 'sp-status-'+(m.status||'entwurf');
+      const stLbl = {live:'✅ Live',geplant:'⏰ Geplant',entwurf:'✏️ Entwurf'}[m.status]||m.status;
+      const [y,mo,d] = m.releaseDate.split('-').map(Number);
+      return `<tr>
+        <td><span class="sp-type-badge ${typeClass}">${typeLabel}</span></td>
+        <td style="font-weight:600">${m.title}</td>
+        <td>${d}. ${MONTHS[mo-1]} ${y}</td>
+        <td><span class="sp-status-badge ${stCls}">${stLbl}</span></td>
+        <td>
+          <button class="sp-action-btn" onclick="openEditMaterial(${m.id})">✏️ Bearbeiten</button>
+          <button class="sp-action-btn del" onclick="deleteMaterial(${m.id})">🗑 Löschen</button>
+        </td>
+      </tr>`;
+    }).join('');
+    return `<div class="sp-fach-group">
+      <div class="sp-fach-label" style="background:${col}">${fach}</div>
+      <table class="sp-table">
+        <thead><tr><th>Typ</th><th>Titel</th><th>Freischaltung</th><th>Status</th><th>Aktionen</th></tr></thead>
+        <tbody>${rows}</tbody>
+      </table>
+    </div>`;
+  }).join('');
+}
+
+function openAddMaterial() {
+  adminMat = null;
+  document.getElementById('material-modal-title').textContent = 'Material hinzufügen';
+  populateSelect('mat-jahrgang', JAHRGAENGE.map(j=>({value:j.id,label:'Klasse '+j.id})));
+  populateSelect('mat-fach', FAECHER.map(s=>({value:s,label:s})));
+  document.getElementById('mat-title').value='';
+  document.getElementById('mat-date').value=fd(0);
+  document.getElementById('mat-type').value='video';
+  document.getElementById('mat-status').value='geplant';
+  if (spSelectedJg) document.getElementById('mat-jahrgang').value=spSelectedJg;
+  if (spSelectedFach) document.getElementById('mat-fach').value=spSelectedFach;
+  document.getElementById('modal-material').classList.add('open');
+}
+
+function openEditMaterial(id) {
+  const m = MATERIALIEN.find(x=>x.id===id);
+  if (!m) return;
+  adminMat = id;
+  document.getElementById('material-modal-title').textContent = 'Material bearbeiten';
+  populateSelect('mat-jahrgang', JAHRGAENGE.map(j=>({value:j.id,label:'Klasse '+j.id})));
+  populateSelect('mat-fach', FAECHER.map(s=>({value:s,label:s})));
+  document.getElementById('mat-jahrgang').value = m.jahrgang;
+  document.getElementById('mat-fach').value = m.fach;
+  document.getElementById('mat-type').value = m.type;
+  document.getElementById('mat-status').value = m.status;
+  document.getElementById('mat-title').value = m.title;
+  document.getElementById('mat-date').value = m.releaseDate;
+  document.getElementById('modal-material').classList.add('open');
+}
+
+function saveMaterial() {
+  const t=document.getElementById('mat-title').value.trim();
+  const d=document.getElementById('mat-date').value;
+  if (!t||!d) return;
+  const obj = {
+    jahrgang:document.getElementById('mat-jahrgang').value,
+    fach:document.getElementById('mat-fach').value,
+    type:document.getElementById('mat-type').value,
+    status:document.getElementById('mat-status').value,
+    title:t, releaseDate:d
+  };
+  if (adminMat!==null) {
+    Object.assign(MATERIALIEN.find(m=>m.id===adminMat), obj);
+  } else {
+    MATERIALIEN.push({id:matId++, ...obj});
+  }
+  closeModal('modal-material');
+  renderStoffplan();
+  renderSpJgList();
+  renderUpcomingReleases();
+  renderAdminStats();
+  acRc(); acRel();
+}
+
+function deleteMaterial(id) {
+  const idx = MATERIALIEN.findIndex(m=>m.id===id);
+  if (idx>-1) MATERIALIEN.splice(idx,1);
+  renderStoffplan();
+  renderSpJgList();
+  renderUpcomingReleases();
+  renderAdminStats();
+}
+
+// ════════════════════════════════════════════════════════
+// ── ADMIN CALENDAR (Freischaltung) ──
+// ════════════════════════════════════════════════════════
+function renderAcalJgPills() {
+  const el = document.getElementById('acal-jg-pills');
+  el.innerHTML = `<button class="acal-pill${acalFilterJg==='alle'?' active':''}" onclick="setAcalJg('alle')" style="${acalFilterJg==='alle'?'background:var(--accent);border-color:var(--accent)':''}">Alle</button>`
+    + JAHRGAENGE.map((jg,i)=>{
+      const col=JG_GRADS[i%JG_GRADS.length], active=acalFilterJg===jg.id;
+      return `<button class="acal-pill${active?' active':''}" onclick="setAcalJg('${jg.id}')" style="${active?'background:'+col+';border-color:'+col:''}">${jg.id}</button>`;
+    }).join('');
+}
+
+function renderAcalFachPills() {
+  const el = document.getElementById('acal-fach-pills');
+  el.innerHTML = `<button class="acal-pill${acalFilterFach==='alle'?' active':''}" onclick="setAcalFach('alle')" style="${acalFilterFach==='alle'?'background:var(--accent);border-color:var(--accent)':''}">Alle</button>`
+    + FAECHER.map(s=>{
+      const col=FACH_COLORS[s]||'#64748B', active=acalFilterFach===s;
+      return `<button class="acal-pill${active?' active':''}" onclick="setAcalFach('${s}')" style="${active?'background:'+col+';border-color:'+col:''}">${s}</button>`;
+    }).join('');
+}
+
+function setAcalJg(v) { acalFilterJg=v; renderAcalJgPills(); acRc(); acRel(); }
+function setAcalFach(v){ acalFilterFach=v; renderAcalFachPills(); acRc(); acRel(); }
+
+function getFilteredMats() {
+  return MATERIALIEN.filter(m=>
+    (acalFilterJg==='alle'||m.jahrgang===acalFilterJg) &&
+    (acalFilterFach==='alle'||m.fach===acalFilterFach)
+  );
+}
+
+function acRc() {
+  const g=document.getElementById('acg');
+  if (!g) return;
+  document.getElementById('act').textContent=MONTHS[acalVm]+' '+acalVy;
+  g.innerHTML='';
+  const fd2=new Date(acalVy,acalVm,1).getDay(), off=fd2===0?6:fd2-1;
+  const dim=new Date(acalVy,acalVm+1,0).getDate(), dimp=new Date(acalVy,acalVm,0).getDate();
+  const tot=Math.ceil((off+dim)/7)*7;
+  const mats=getFilteredMats();
+  for(let i=0;i<tot;i++){
+    let cd,om=false;
+    if(i<off){cd=new Date(acalVy,acalVm-1,dimp-off+i+1);om=true;}
+    else if(i>=off+dim){cd=new Date(acalVy,acalVm+1,i-off-dim+1);om=true;}
+    else cd=new Date(acalVy,acalVm,i-off+1);
+    const ds=f(cd.getFullYear(),cd.getMonth(),cd.getDate());
+    const c=document.createElement('div');c.className='cdc';
+    if(om)c.classList.add('om');
+    if(ds===td())c.classList.add('today');
+    if(acalSel&&ds===acalSel&&ds!==td())c.classList.add('sel');
+    const n=document.createElement('div');n.className='dn';n.textContent=cd.getDate();c.appendChild(n);
+    const dm=mats.filter(m=>m.date===ds||m.releaseDate===ds);
+    if(dm.length){
+      const dots=document.createElement('div');dots.className='eds';
+      const uniq=[...new Set(dm.map(m=>FACH_COLORS[m.fach]||'#64748B'))].slice(0,3);
+      uniq.forEach(col=>{const d=document.createElement('div');d.className='ed';d.style.background=col;dots.appendChild(d);});
+      c.appendChild(dots);
+    }
+    c.addEventListener('click',()=>{acalSel=ds;acRc();acRel();});
+    g.appendChild(c);
+  }
+}
+
+function acRel() {
+  const l=document.getElementById('acel'), lb=document.getElementById('acsl');
+  if (!l||!lb) return;
+  if(!acalSel){lb.textContent='Tag auswählen';l.innerHTML='<p class="ne">Tag anklicken, um Freischaltungen zu sehen</p>';return;}
+  const[y,m,d]=acalSel.split('-').map(Number);
+  lb.textContent=DAYS[new Date(y,m-1,d).getDay()]+', '+MONTHS[m-1]+' '+d;
+  const mats=getFilteredMats().filter(m2=>m2.releaseDate===acalSel);
+  if(!mats.length){l.innerHTML='<p class="ne">Keine Freischaltungen an diesem Tag</p>';return;}
+  l.innerHTML='';
+  mats.forEach(m2=>{
+    const col=FACH_COLORS[m2.fach]||'#64748B';
+    const typeIcon={video:'🎥',aufgabe:'📋',quiz:'🧠'}[m2.type]||'📄';
+    const stLbl={live:'Live',geplant:'Geplant',entwurf:'Entwurf'}[m2.status]||m2.status;
+    const stBg={live:'var(--teal-l)',geplant:'var(--amber-l)',entwurf:'var(--bg)'}[m2.status]||'var(--bg)';
+    const stCol={live:'var(--teal)',geplant:'var(--amber)',entwurf:'var(--muted)'}[m2.status]||'var(--muted)';
+    const el=document.createElement('div');el.className='rel-eli';
+    el.innerHTML=`<div class="rel-ecb" style="background:${col}"></div>
+      <div class="rel-body">
+        <div class="rel-title">${typeIcon} ${m2.title}</div>
+        <div class="rel-meta">${m2.jahrgang} · ${m2.fach}</div>
+        <div class="rel-badges">
+          <span style="font-size:10px;font-weight:700;padding:2px 7px;border-radius:5px;background:${stBg};color:${stCol}">${stLbl}</span>
+          <span style="font-size:10px;font-weight:700;padding:2px 7px;border-radius:5px;background:${col}18;color:${col}">${m2.fach}</span>
+        </div>
+      </div>
+      <div class="rel-ea">
+        <button class="eb" onclick="openEditMaterial(${m2.id})">✏️</button>
+        <button class="eb del" onclick="deleteMaterial(${m2.id});acRc();acRel()">🗑</button>
+      </div>`;
+    l.appendChild(el);
+  });
+}
+
+document.getElementById('acp').addEventListener('click',()=>{acalVm--;if(acalVm<0){acalVm=11;acalVy--;}acRc();acRel();});
+document.getElementById('acn').addEventListener('click',()=>{acalVm++;if(acalVm>11){acalVm=0;acalVy++;}acRc();acRel();});
+
+function openAddRelease() {
+  populateSelect('rel-jahrgang', JAHRGAENGE.map(j=>({value:j.id,label:'Klasse '+j.id})));
+  populateSelect('rel-fach', FAECHER.map(s=>({value:s,label:s})));
+  document.getElementById('rel-title').value='';
+  document.getElementById('rel-date').value=acalSel||fd(0);
+  document.getElementById('rel-time').value='08:00';
+  if(acalFilterJg!=='alle') document.getElementById('rel-jahrgang').value=acalFilterJg;
+  if(acalFilterFach!=='alle') document.getElementById('rel-fach').value=acalFilterFach;
+  document.getElementById('modal-release').classList.add('open');
+}
+
+function saveRelease() {
+  const t=document.getElementById('rel-title').value.trim();
+  const d=document.getElementById('rel-date').value;
+  if(!t||!d) return;
+  MATERIALIEN.push({
+    id:matId++,
+    jahrgang:document.getElementById('rel-jahrgang').value,
+    fach:document.getElementById('rel-fach').value,
+    type:document.getElementById('rel-type').value,
+    title:t, releaseDate:d, status:'geplant'
+  });
+  closeModal('modal-release');
+  acRc(); acRel();
+  renderUpcomingReleases();
+  renderAdminStats();
+}
+
+// ════════════════════════════════════════════════════════
+// ── ADMIN GROUPS ──
+// ════════════════════════════════════════════════════════
+function renderGroupList(filter='') {
+  const el=document.getElementById('agc-list');
+  const groups=ADMIN_GROUPS.filter(g=>!filter||g.name.toLowerCase().includes(filter.toLowerCase()));
+  el.innerHTML=groups.map(g=>`
+    <div class="agc-li${activeAdminGroup===g.id?' active':''}" onclick="openAdminGroup(${g.id})">
+      <div class="chat-av" style="background:${g.color};width:36px;height:36px;font-size:11px">${g.name.split('')[0]+g.name.split(' ')[1][0]}</div>
+      <div class="chat-info">
+        <div class="chat-name">${g.name}</div>
+        <div class="chat-prev">${g.lastMsg}</div>
+      </div>
+      <div class="chat-meta">
+        <span class="chat-time">${g.lastTime}</span>
+        ${g.unread?`<span class="chat-badge">${g.unread}</span>`:''}
+      </div>
+    </div>`).join('');
+}
+
+function filterGroups(v) { renderGroupList(v); }
+
+function openAdminGroup(id) {
+  activeAdminGroup=id;
+  activeAdminTab='chat';
+  renderGroupList(document.getElementById('group-search').value);
+  const g=ADMIN_GROUPS.find(x=>x.id===id);
+  g.unread=0;
+  if(!adminGroupMessages[id]) adminGroupMessages[id]=[];
+  if(!ADMIN_TASKS[id]) ADMIN_TASKS[id]=[];
+  if(!ADMIN_MEMBERS[id]) ADMIN_MEMBERS[id]=[];
+  renderAdminGroupDetail(id);
+}
+
+function renderAdminGroupDetail(id) {
+  const g=ADMIN_GROUPS.find(x=>x.id===id);
+  if(!g) return;
+  const detail=document.getElementById('admin-group-detail');
+  detail.innerHTML=`
+    <div class="agd-header">
+      <div class="chat-av" style="background:${g.color};width:38px;height:38px;font-size:12px">${g.name.split('')[0]+g.name.split(' ')[1][0]}</div>
+      <div class="agd-hd-info">
+        <div class="agd-hd-name">${g.name}</div>
+        <div class="agd-hd-meta">${g.members} Mitglieder · ${g.fach||'Allgemein'}${g.jahrgang?' · Klasse '+g.jahrgang:''}</div>
+      </div>
+      <div class="agd-hd-actions">
+        <button class="agd-hd-btn primary" onclick="openAddTask(${id})">＋ Aufgabe</button>
+        <button class="agd-hd-btn" onclick="openAddQuiz(${id})" style="background:var(--amber-l);color:var(--amber);border-color:var(--amber)">🧠 Quiz</button>
+      </div>
+    </div>
+    <div class="agd-tabs">
+      <div class="agd-tab${activeAdminTab==='chat'?' active':''}" onclick="switchAdminGroupTab(${id},'chat')">💬 Chat</div>
+      <div class="agd-tab${activeAdminTab==='tasks'?' active':''}" onclick="switchAdminGroupTab(${id},'tasks')">📋 Aufgaben & Quizze</div>
+      <div class="agd-tab${activeAdminTab==='members'?' active':''}" onclick="switchAdminGroupTab(${id},'members')">👥 Mitglieder</div>
+    </div>
+    <div class="agd-tab-panel${activeAdminTab==='chat'?' active':''}" id="agd-panel-chat">
+      <div class="agd-chat-messages" id="agd-msgs-${id}"></div>
+      <div class="agd-input-row">
+        <input class="agd-input" id="agd-input-${id}" placeholder="Nachricht an ${g.name}…"
+          onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendAdminMsg(${id});}">
+        <button class="agd-send-btn" onclick="sendAdminMsg(${id})">➤</button>
+      </div>
+    </div>
+    <div class="agd-tab-panel${activeAdminTab==='tasks'?' active':''}" id="agd-panel-tasks">
+      <div class="agd-tasks-panel" id="agd-tasks-${id}"></div>
+      <div class="agd-tasks-footer">
+        <button class="agd-task-add-btn" onclick="openAddTask(${id})">＋ Aufgabe hinzufügen</button>
+        <button class="agd-task-add-btn" onclick="openAddQuiz(${id})" style="flex:0.5">🧠 Quiz</button>
+      </div>
+    </div>
+    <div class="agd-tab-panel${activeAdminTab==='members'?' active':''}" id="agd-panel-members">
+      <div class="agd-members-panel" id="agd-members-${id}"></div>
+      <div class="agd-members-add">
+        <input placeholder="Name oder E-Mail eingeben…" id="member-add-input-${id}">
+        <button onclick="addMember(${id})">＋ Hinzufügen</button>
+      </div>
+    </div>`;
+  renderAdminGroupMessages(id);
+  renderAdminTasks(id);
+  renderAdminMembers(id);
+}
+
+function switchAdminGroupTab(id, tab) {
+  activeAdminTab=tab;
+  const detail=document.getElementById('admin-group-detail');
+  detail.querySelectorAll('.agd-tab').forEach((t,i)=>{
+    const tabs=['chat','tasks','members'];
+    t.classList.toggle('active', tabs[i]===tab);
+  });
+  detail.querySelectorAll('.agd-tab-panel').forEach(p=>p.classList.remove('active'));
+  const panel=document.getElementById(`agd-panel-${tab}`);
+  if(panel) panel.classList.add('active');
+}
+
+function renderAdminGroupMessages(id) {
+  const container=document.getElementById(`agd-msgs-${id}`);
+  if(!container) return;
+  const msgs=adminGroupMessages[id]||[];
+  container.innerHTML=msgs.map(m=>{
+    const isAdmin2=m.role==='out';
+    return `<div class="${isAdmin2?'agd-msg-admin':'agd-msg-user'}">
+      <div class="chat-small-av" style="background:${isAdmin2?'var(--accent)':'#64748B'}">${isAdmin2?'A':'S'}</div>
+      <div>
+        <div class="${isAdmin2?'agd-bubble-admin':'agd-bubble-user'}">${m.text}</div>
+        <div style="display:flex;gap:6px;align-items:center">
+          <div class="agd-msg-time">${m.time}</div>
+          ${!isAdmin2?`<div class="agd-msg-author">${m.author}</div>`:''}
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+  container.scrollTop=container.scrollHeight;
+}
+
+function sendAdminMsg(id) {
+  const inp=document.getElementById(`agd-input-${id}`);
+  const text=inp.value.trim();
+  if(!text) return;
+  const now=new Date();
+  const time=now.getHours().toString().padStart(2,'0')+':'+now.getMinutes().toString().padStart(2,'0');
+  if(!adminGroupMessages[id]) adminGroupMessages[id]=[];
+  adminGroupMessages[id].push({role:'out',text,time,author:'Admin'});
+  const g=ADMIN_GROUPS.find(x=>x.id===id);
+  if(g) { g.lastMsg=text; g.lastTime=time; }
+  inp.value='';
+  renderAdminGroupMessages(id);
+  renderGroupList(document.getElementById('group-search').value);
+}
+
+function renderAdminTasks(id) {
+  const el=document.getElementById(`agd-tasks-${id}`);
+  if(!el) return;
+  const tasks=ADMIN_TASKS[id]||[];
+  if(!tasks.length) { el.innerHTML='<p class="ne" style="padding:30px">Noch keine Aufgaben oder Quizze</p>'; return; }
+  el.innerHTML=tasks.map(t=>{
+    const pct=t.total?Math.round((t.submissions/t.total)*100):0;
+    const [y,m,d]=t.deadline.split('-').map(Number);
+    const deadlineStr=d+'. '+MONTHS[m-1]+' '+y;
+    const qs=t.questions?t.questions.map(q=>`
+      <div class="quiz-q-item">
+        <div class="quiz-q-text">${q.q}</div>
+        <div class="quiz-opt-list">${q.opts.map((o,i)=>`
+          <div class="quiz-opt${i===q.correct?' correct':''}">
+            <div class="quiz-opt-dot"></div>${o}${i===q.correct?' ✓':''}
+          </div>`).join('')}</div>
+      </div>`).join(''):'';
+    return `<div class="task-item">
+      <div class="task-header">
+        <div class="task-title">${t.title}</div>
+        <span class="task-type-badge task-type-${t.type}">${t.type==='quiz'?'🧠 Quiz':'📋 Aufgabe'}</span>
+      </div>
+      <div class="task-desc">${t.desc}</div>
+      ${qs}
+      <div class="task-footer">
+        <div class="task-deadline"><span class="task-deadline-label">Fällig: </span>${deadlineStr}</div>
+        <div class="task-submissions">${t.submissions}/${t.total} Abgaben</div>
+        <div class="task-progress-bar"><div class="task-progress-fill" style="width:${pct}%"></div></div>
+        <div class="task-actions">
+          <button class="sp-action-btn del" onclick="deleteTask(${id},${t.id})">🗑</button>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function renderAdminMembers(id) {
+  const el=document.getElementById(`agd-members-${id}`);
+  if(!el) return;
+  const members=ADMIN_MEMBERS[id]||[];
+  if(!members.length) { el.innerHTML='<p class="ne" style="padding:20px">Keine Mitglieder eingetragen</p>'; return; }
+  el.innerHTML=members.map((m,i)=>`
+    <div class="member-li">
+      <div class="member-av" style="background:${m.color}">${m.initials}</div>
+      <div class="member-name">${m.name}</div>
+      <div class="member-role">${m.role}</div>
+      <button class="member-remove" onclick="removeMember(${id},${i})">Entfernen</button>
+    </div>`).join('');
+}
+
+function addMember(id) {
+  const inp=document.getElementById(`member-add-input-${id}`);
+  const name=inp.value.trim();
+  if(!name) return;
+  if(!ADMIN_MEMBERS[id]) ADMIN_MEMBERS[id]=[];
+  const colors=['#5B50D6','#1D9E75','#E8960A','#2B7FD4','#7C3AED','#E24B4A'];
+  const initials=name.split(' ').map(n=>n[0]||'').join('').toUpperCase().slice(0,2)||'??';
+  ADMIN_MEMBERS[id].push({name,initials,color:colors[ADMIN_MEMBERS[id].length%colors.length],role:'Schüler/in'});
+  const g=ADMIN_GROUPS.find(x=>x.id===id); if(g) g.members=ADMIN_MEMBERS[id].length;
+  inp.value='';
+  renderAdminMembers(id);
+}
+
+function removeMember(id, idx) {
+  if(ADMIN_MEMBERS[id]) {
+    ADMIN_MEMBERS[id].splice(idx,1);
+    const g=ADMIN_GROUPS.find(x=>x.id===id); if(g) g.members=ADMIN_MEMBERS[id].length;
+    renderAdminMembers(id);
+  }
+}
+
+let taskTargetGroup=null, quizTargetGroup=null, quizQuestions=[];
+
+function openAddTask(groupId) {
+  taskTargetGroup=groupId;
+  document.getElementById('task-modal-title').textContent='Aufgabe erstellen';
+  document.getElementById('task-title').value='';
+  document.getElementById('task-desc').value='';
+  document.getElementById('task-deadline').value=fd(7);
+  document.getElementById('task-points').value='10';
+  document.getElementById('modal-task').classList.add('open');
+}
+
+function saveTask() {
+  const t=document.getElementById('task-title').value.trim();
+  const desc=document.getElementById('task-desc').value.trim();
+  const dl=document.getElementById('task-deadline').value;
+  if(!t||!dl) return;
+  if(!ADMIN_TASKS[taskTargetGroup]) ADMIN_TASKS[taskTargetGroup]=[];
+  const g=ADMIN_GROUPS.find(x=>x.id===taskTargetGroup);
+  ADMIN_TASKS[taskTargetGroup].push({
+    id:Date.now(), type:'aufgabe', title:t, desc:desc||'Keine Beschreibung.',
+    deadline:dl, points:parseInt(document.getElementById('task-points').value)||10,
+    submissions:0, total:g?g.members:0
+  });
+  closeModal('modal-task');
+  renderAdminTasks(taskTargetGroup);
+  renderAdminStats();
+}
+
+function deleteTask(groupId, taskId) {
+  if(ADMIN_TASKS[groupId]) {
+    ADMIN_TASKS[groupId]=ADMIN_TASKS[groupId].filter(t=>t.id!==taskId);
+    renderAdminTasks(groupId);
+  }
+}
+
+function openAddQuiz(groupId) {
+  quizTargetGroup=groupId;
+  quizQuestions=[{q:'',opts:['','','',''],correct:0}];
+  document.getElementById('quiz-title').value='';
+  document.getElementById('quiz-deadline').value=fd(7);
+  renderQuizBuilder();
+  document.getElementById('modal-quiz').classList.add('open');
+}
+
+function addQuizQuestion() {
+  quizQuestions.push({q:'',opts:['','',''],correct:0});
+  renderQuizBuilder();
+}
+
+function renderQuizBuilder() {
+  const el=document.getElementById('quiz-builder');
+  el.innerHTML=quizQuestions.map((q,qi)=>`
+    <div class="quiz-q-builder">
+      <div class="quiz-q-builder-hd">
+        <span class="quiz-q-num">Frage ${qi+1}</span>
+        ${quizQuestions.length>1?`<button class="quiz-q-remove" onclick="removeQuizQ(${qi})">✕</button>`:''}
+      </div>
+      <input style="width:100%;border:1px solid var(--border);border-radius:8px;padding:7px 10px;font-family:var(--font);font-size:12px;background:var(--bg);color:var(--text);outline:none;margin-bottom:8px"
+        placeholder="Frage eingeben…" value="${q.q}" oninput="quizQuestions[${qi}].q=this.value">
+      ${q.opts.map((o,oi)=>`
+        <div style="display:flex;align-items:center;gap:6px;margin-bottom:5px">
+          <input type="radio" name="correct-${qi}" ${q.correct===oi?'checked':''} onchange="quizQuestions[${qi}].correct=${oi}" title="Richtige Antwort">
+          <input style="flex:1;border:1px solid var(--border);border-radius:7px;padding:5px 9px;font-family:var(--font);font-size:12px;background:var(--bg);color:var(--text);outline:none"
+            placeholder="Antwort ${oi+1}…" value="${o}" oninput="quizQuestions[${qi}].opts[${oi}]=this.value">
+        </div>`).join('')}
+    </div>`).join('');
+}
+
+function removeQuizQ(i) {
+  quizQuestions.splice(i,1);
+  renderQuizBuilder();
+}
+
+function saveQuiz() {
+  const t=document.getElementById('quiz-title').value.trim();
+  const dl=document.getElementById('quiz-deadline').value;
+  if(!t||!dl) return;
+  if(!ADMIN_TASKS[quizTargetGroup]) ADMIN_TASKS[quizTargetGroup]=[];
+  const g=ADMIN_GROUPS.find(x=>x.id===quizTargetGroup);
+  ADMIN_TASKS[quizTargetGroup].push({
+    id:Date.now(), type:'quiz', title:t,
+    desc:`${quizQuestions.length} Fragen · Multiple Choice`,
+    deadline:dl, points:quizQuestions.length*5,
+    submissions:0, total:g?g.members:0,
+    questions:quizQuestions.map(q=>({q:q.q||'?',opts:q.opts.filter(o=>o)||['—','—'],correct:q.correct}))
+  });
+  closeModal('modal-quiz');
+  renderAdminTasks(quizTargetGroup);
+  renderAdminStats();
+}
+
+function openNewGroup() {
+  populateSelect('ng-jahrgang',[{value:'',label:'Kein Jahrgang'},...JAHRGAENGE.map(j=>({value:j.id,label:'Klasse '+j.id}))]);
+  populateSelect('ng-fach',[{value:'',label:'Kein Fach'},...FAECHER.map(s=>({value:s,label:s}))]);
+  document.getElementById('ng-name').value='';
+  document.getElementById('modal-newgroup').classList.add('open');
+}
+
+function saveNewGroup() {
+  const name=document.getElementById('ng-name').value.trim();
+  if(!name) return;
+  const jg=document.getElementById('ng-jahrgang').value;
+  const fach=document.getElementById('ng-fach').value;
+  const colors=['#5B50D6','#1D9E75','#E8960A','#2B7FD4','#7C3AED','#E24B4A'];
+  ADMIN_GROUPS.push({
+    id:adminGroupId++,name,jahrgang:jg||null,fach:fach||null,
+    members:0,color:colors[ADMIN_GROUPS.length%colors.length],
+    lastMsg:'Gruppe erstellt',lastTime:'Jetzt',unread:0
+  });
+  closeModal('modal-newgroup');
+  renderGroupList();
+}
+
+// ── HELPER ──
+function populateSelect(id, opts) {
+  const el=document.getElementById(id);
+  if(!el) return;
+  el.innerHTML=opts.map(o=>`<option value="${o.value}">${o.label}</option>`).join('');
+}
+
+function closeModal(id) {
+  document.getElementById(id).classList.remove('open');
+}
+
+document.querySelectorAll('.admin-mo').forEach(mo=>
+  mo.addEventListener('click',e=>{ if(e.target===e.currentTarget) mo.classList.remove('open'); })
+);
+
+// ── ADMIN NAV CLICK ──
+document.querySelectorAll('.admin-nav .sni').forEach(n=>
+  n.addEventListener('click',()=>adminSwitchTab(n.dataset.tab))
+);
+
 // ── BOOT ──
 renderStats();
 renderHomeChannels();
@@ -1141,6 +2592,21 @@ renderFeaturedVideo();
 renderVideosTab();
 renderMsgList();
 document.getElementById('prof-ch-count').textContent = CHANNELS.length;
+
+// ── BOOT ADMIN ──
+function bootAdmin() {
+  renderAdminStats();
+  renderJahrgangeGrid();
+  renderUpcomingReleases();
+  renderAdminActivity();
+  renderSpJgList();
+  renderSpFachPills();
+  renderGroupList();
+  renderAcalJgPills();
+  renderAcalFachPills();
+  acRc(); acRel();
+}
+bootAdmin();
 </script>
 </body>
 </html>
